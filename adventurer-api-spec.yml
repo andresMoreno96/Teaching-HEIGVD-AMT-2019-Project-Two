@@ -1,0 +1,161 @@
+swagger: "2.0"
+info:
+  description: "A simple adventurer API"
+  version: "1.0.0"
+  title: "AMT Adventurer API"
+basePath: "/"
+schemes:
+  - "https"
+  - "http"
+tags:
+  - name: Adventurers
+  - name: Quests
+paths:
+  /adventurers:
+    get:
+      operationId: getAdventurers
+      summary: Get adventurers' informations
+      tags:
+      - Adventurers
+      parameters:
+        - $ref: '#/parameters/Page'
+        - $ref: '#/parameters/Quantity'
+      responses:
+        200:
+          description: adventurers
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Adventurer"
+    post:
+      operationId: createAdventurer
+      summary: Create a new adventurer
+      tags:
+      - Adventurers
+      parameters:
+        - name: adventurer
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/AdventurerCreate'
+      security:
+        - Bearer: []
+      responses:
+        200:
+          description: adventurer created
+          schema:
+            $ref: '#/definitions/Adventurer'
+        400:
+          description: creation failed
+        403:
+          description: unauthorized access
+  /adventurers/{name}:
+    get:
+      operationId: getAdventurer
+      summary: Get an adventurer's informations
+      tags:
+      - Adventurers
+      parameters:
+        - $ref: '#/parameters/Name'
+      responses:
+        200:
+          description: adventurer informations
+          schema:
+            $ref: '#/definitions/Adventurer'
+        404:
+          description: adventurer not found
+    put:
+      operationId: updateAdventurer
+      summary: Update adventurer informations
+      tags:
+      - Adventurers
+      parameters:
+        - $ref: '#/parameters/Name'
+        - name: informations
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/AdventurerUpdate'
+      security:
+        - Bearer: []
+      responses:
+        200:
+          description: adventurer updated
+          schema:
+            $ref: '#/definitions/Adventurer'
+        403:
+          description: adventurer not found
+        404:
+          description: unauthorized access
+  /quests:
+    get:
+      operationId: getQuests
+      summary: Get quests' informations
+      tags:
+      - Quests
+      parameters:
+        - $ref: '#/parameters/Page'
+        - $ref: '#/parameters/Quantity'
+      responses:
+        200:
+          description: quests
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Quest"
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+parameters:
+  Page:
+    name: page
+    in: query
+    type: string
+    description: The page number of the pagination
+  Quantity:
+    name: quantity
+    in: query
+    type: string
+    description: The quantity of element per page
+  Name:
+    name: name
+    in: path
+    type: string
+    required: true
+    description: The name of an adventurer
+definitions:
+  Adventurer:
+    type: object
+    properties:
+      name:
+        type: string
+      job:
+        type: string
+      rank:
+        type: string
+  AdventurerCreate:
+    type: object
+    properties:
+      name:
+        type: string
+      job:
+        type: string
+  AdventurerUpdate:
+    type: object
+    properties:
+      job:
+        type: string
+  Quest:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      title:
+        type: string
+      description:
+        type: string
+      rank:
+        type: string

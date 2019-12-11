@@ -1,0 +1,128 @@
+swagger: "2.0"
+info:
+  description: "A simple user account managment API"
+  version: "1.0.0"
+  title: "AMT User API"
+basePath: "/auth/"
+schemes:
+- "https"
+- "http"
+paths:
+  /users:
+    post:
+      operationId: createuser
+      summary: "Create new user account"
+      parameters:
+      - name: account
+        description: "New user account informations"
+        in: body
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        200:
+          description: "user account created"
+  /users/{email}:
+    get:
+      operationId: getuser
+      summary: "Get user account informations"
+      parameters:
+      - $ref: "#/parameters/email"
+      security:
+      - Bearer: []
+      responses:
+        200:
+          description: "operation success"
+          schema:
+            $ref: "#/definitions/UserNoPassword"
+        404:
+          description: user not found
+        403:
+          description: unauthorized access
+  /users/{email}/password-reset:
+    post:
+      operationId: resetPassword
+      summary: "Request password reset"
+      parameters:
+      - $ref: "#/parameters/email"
+      responses:
+        200:
+         description: "request accepted"
+        404:
+          description: "user account not found"
+  /password:
+    post:
+      operationId: changePassword
+      summary: "Reset the password"
+      consumes:
+      - "multipart/form-data"
+      parameters:
+      - name: password
+        description: The new password
+        in: formData
+        required: true
+        type: "string"
+      security:
+      - Bearer: []
+      responses:
+        200:
+         description: password changed
+        404:
+          description: unauthorized access
+  /authentication:
+    post:
+      operationId: authenticateUser
+      summary: "Authenticate a user"
+      consumes:
+      - "multipart/form-data"
+      parameters:
+      - name: email
+        description: "The user email"
+        in: formData
+        required: true
+        type: "string"
+      - name: password
+        description: "The user password"
+        in: formData
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "user authenticated"
+          schema:
+            type: string
+        400:
+          description: "incorrect credentials"
+parameters:
+  email:
+    name: email
+    description: "User email"
+    required: true
+    type: string
+    in: path
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+definitions:
+  User:
+    type: "object"
+    properties:
+      email:
+        type: "string"
+      firstName:
+        type: "string"
+      lastName:
+        type: "string"
+      password:
+        type: "string"
+  UserNoPassword:
+    type: "object"
+    properties:
+      email:
+        type: "string"
+      firstName:
+        type: "string"
+      lastName:
+        type: "string"
