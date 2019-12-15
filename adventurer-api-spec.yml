@@ -10,28 +10,30 @@ schemes:
 tags:
   - name: Adventurers
   - name: Quests
+  - name: Participations
 paths:
   /adventurers:
     get:
       operationId: getAdventurers
-      summary: Get adventurers' informations
+      summary: Get adventurers informations
       tags:
-      - Adventurers
+        - Adventurers
       parameters:
-        - $ref: '#/parameters/Page'
-        - $ref: '#/parameters/Quantity'
+        - $ref: '#/parameters/Limit'
+        - $ref: '#/parameters/Offset'
+        - $ref: '#/parameters/SortBy'
       responses:
         200:
           description: adventurers
           schema:
             type: array
             items:
-              $ref: "#/definitions/Adventurer"
+              $ref: '#/definitions/Adventurer'
     post:
       operationId: createAdventurer
       summary: Create a new adventurer
       tags:
-      - Adventurers
+        - Adventurers
       parameters:
         - name: adventurer
           in: body
@@ -42,19 +44,19 @@ paths:
         - Bearer: []
       responses:
         200:
-          description: adventurer created
+          description: adventurer creation success
           schema:
             $ref: '#/definitions/Adventurer'
         400:
-          description: creation failed
+          description: adventurer creation failed
         403:
           description: unauthorized access
   /adventurers/{name}:
     get:
       operationId: getAdventurer
-      summary: Get an adventurer's informations
+      summary: Get an adventurer informations
       tags:
-      - Adventurers
+        - Adventurers
       parameters:
         - $ref: '#/parameters/Name'
       responses:
@@ -68,7 +70,7 @@ paths:
       operationId: updateAdventurer
       summary: Update adventurer informations
       tags:
-      - Adventurers
+        - Adventurers
       parameters:
         - $ref: '#/parameters/Name'
         - name: informations
@@ -84,18 +86,34 @@ paths:
           schema:
             $ref: '#/definitions/Adventurer'
         403:
-          description: adventurer not found
-        404:
           description: unauthorized access
+        404:
+          description: adventurer not found
+    delete:
+      operationId: deleteAdventurer
+      summary: Deletes an adventurer
+      tags:
+        - Adventurers
+      parameters:
+        - $ref: '#/parameters/Name'
+      security:
+        - Bearer: []
+      responses:
+        200:
+          description: adventurer deleted
+        403:
+          description: unauthorized access
+        404:
+          description: adventurer not found
   /quests:
     get:
       operationId: getQuests
-      summary: Get quests' informations
+      summary: Get quests informations
       tags:
-      - Quests
+        - Quests
       parameters:
-        - $ref: '#/parameters/Page'
-        - $ref: '#/parameters/Quantity'
+        - $ref: '#/parameters/Limit'
+        - $ref: '#/parameters/Offset'
       responses:
         200:
           description: quests
@@ -103,28 +121,212 @@ paths:
             type: array
             items:
               $ref: "#/definitions/Quest"
+    post:
+      operationId: createQuest
+      summary: Create a new quest
+      tags:
+        - Quests
+      parameters:
+        - name: quest
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/QuestCreate'
+      security:
+        - Bearer: []
+      responses:
+        200:
+          description: quest creation success
+          schema:
+            $ref: '#/definitions/Adventurer'
+        400:
+          description: quest creation failed
+        403:
+          description: unauthorized access
+  /quests/{id}:
+    get:
+      operationId: getQuest
+      summary: Get a quest informations
+      tags:
+        - Quests
+      parameters:
+        - $ref: '#/parameters/QuestID'
+      responses:
+        200:
+          description: quest found
+          schema:
+            $ref: '#/definitions/Quest'
+        404:
+          description: quest not found
+    put:
+      operationId: updateQuest
+      summary: Update a quest informations
+      tags:
+        - Quests
+      parameters:
+        - $ref: '#/parameters/QuestID'
+        - name: informations
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/QuestUpdate'
+      security:
+        - Bearer: []
+      responses:
+        200:
+          description: quest updated
+          schema:
+            $ref: '#/definitions/Quest'
+        403:
+          description: unauthorized access
+        404:
+          description: quest not found
+    delete:
+      operationId: deleteQuest
+      summary: Deletes a quest
+      tags:
+        - Quests
+      parameters:
+        - $ref: '#/parameters/QuestID'
+      security:
+        - Bearer: []
+      responses:
+        200:
+          description: deletion success
+        400:
+          description: deletion failed
+        403:
+          description: unauthorized access
+        404:
+          description: quest not found
+        405:
+          description: cannot delete an ended quest
+          headers:
+            Allow:
+              type: string
+              description: Allowed methods
+        409:
+          description: cannot delete a quest with participants
+  /quests/{id}/end:
+    post:
+      operationId: endQuest
+      summary: Ends a quest and checks participants' ranks.
+      tags:
+        - Quests
+      parameters:
+        - $ref: '#/parameters/QuestID'
+      security:
+        - Bearer: []
+      responses:
+        200:
+          description: quest ended
+          schema:
+            $ref: '#/definitions/Quest'
+        403:
+          description: unauthorized access
+        404:
+          description: quest not found
+  /participations:
+    post:
+      operationId: joinQuest
+      summary: An adventurer joins a quest
+      tags:
+        - Participations
+      parameters:
+        - name: adventurer
+          description: Adventurer joining a quest.
+          in: formData
+          type: string
+          required: true
+        - name: quest
+          description: Quest to join.
+          in: formData
+          type: integer
+          required: true
+      security:
+        - Bearer: []
+      responses:
+        200:
+          description: quest joined
+        403:
+          description: unauthorized access
+        404:
+          description: adventurer or quest not found
+        405:
+          description: cannot join an ended quest
+          headers:
+            Allow:
+              type: string
+              description: Allowed methods
+    delete:
+      operationId: quitQuest
+      summary: An adventurer quits a quest
+      tags:
+        - Participations
+      parameters:
+        - name: adventurer
+          description: Adventurer joining a quest.
+          in: formData
+          type: string
+          required: true
+        - name: quest
+          description: Quest to join.
+          in: formData
+          type: integer
+          required: true
+      security:
+        - Bearer: []
+      responses:
+        200:
+          description: quest quitted
+        403:
+          description: unauthorized access
+        404:
+          description: adventurer or quest not found
+        405:
+          description: cannot quit an ended quest
+          headers:
+            Allow:
+              type: string
+              description: Allowed methods
 securityDefinitions:
   Bearer:
     type: apiKey
     name: Authorization
     in: header
 parameters:
-  Page:
-    name: page
+  Limit:
+    name: limit
     in: query
     type: string
-    description: The page number of the pagination
-  Quantity:
-    name: quantity
+    description: The quantity of elements to retrieve
+  Offset:
+    name: offset
     in: query
     type: string
-    description: The quantity of element per page
+    description: The number of elements to omit
+  SortBy:
+    name: sortby
+    in: query
+    type: string
+    description: The name of the data to sort by.
+  Populate:
+    name: populate
+    in: query
+    type: string
+    description: The name of the data to populate.
   Name:
     name: name
     in: path
     type: string
     required: true
-    description: The name of an adventurer
+    description: The name of an adventurer.
+  QuestID:
+    name: id
+    in: path
+    type: integer
+    required: true
+    description: The id of a quest.
 definitions:
   Adventurer:
     type: object
@@ -159,3 +361,34 @@ definitions:
         type: string
       rank:
         type: string
+      owner:
+        type: string
+      ended:
+        type: boolean
+  QuestCreate:
+    type: object
+    properties:
+      title:
+        type: string
+      description:
+        type: string
+      rank:
+        type: string
+      owner:
+        type: string
+  QuestUpdate:
+    type: object
+    properties:
+      title:
+        type: string
+      description:
+        type: string
+      rank:
+        type: string
+  Participation:
+    type: object
+    properties: 
+      adventurer:
+        type: string
+      quest:
+        type: integer

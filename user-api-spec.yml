@@ -1,67 +1,68 @@
 swagger: "2.0"
 info:
-  description: "A simple user account managment API"
-  version: "1.0.0"
-  title: "AMT User API"
-basePath: "/auth/"
+  description: A simple user account managment API
+  version: 1.0.0
+  title: AMT User API
+basePath: /auth/
 schemes:
-- "https"
 - "http"
 paths:
   /users:
     post:
-      operationId: createuser
-      summary: "Create new user account"
+      operationId: createUser
+      summary: Create new user account
       parameters:
       - name: account
-        description: "New user account informations"
+        description: New user account informations
         in: body
         required: true
         schema:
-          $ref: "#/definitions/User"
+          $ref: '#/definitions/User'
       responses:
         200:
-          description: "user account created"
+          description: user account creation success
+        400:
+          description: user account creation fail
   /users/{email}:
     get:
-      operationId: getuser
-      summary: "Get user account informations"
+      operationId: getUser
+      summary: Get user account informations
       parameters:
-      - $ref: "#/parameters/email"
+      - $ref: '#/parameters/email'
       security:
       - Bearer: []
       responses:
         200:
-          description: "operation success"
+          description: operation success
           schema:
             $ref: "#/definitions/UserNoPassword"
-        404:
-          description: user not found
         403:
           description: unauthorized access
+        404:
+          description: user account not found
   /users/{email}/password-reset:
     post:
       operationId: resetPassword
-      summary: "Request password reset"
+      summary: Request password reset
       parameters:
-      - $ref: "#/parameters/email"
+      - $ref: '#/parameters/email'
       responses:
         200:
-         description: "request accepted"
+         description: request sent
         404:
-          description: "user account not found"
+          description: user account not found
   /password:
     post:
       operationId: changePassword
-      summary: "Reset the password"
+      summary: Change the user account's password
       consumes:
-      - "multipart/form-data"
+      - multipart/form-data
       parameters:
       - name: password
         description: The new password
         in: formData
         required: true
-        type: "string"
+        type: string
       security:
       - Bearer: []
       responses:
@@ -72,34 +73,34 @@ paths:
   /authentication:
     post:
       operationId: authenticateUser
-      summary: "Authenticate a user"
+      summary: Authenticate a user
       consumes:
-      - "multipart/form-data"
+      - multipart/form-data
       parameters:
       - name: email
-        description: "The user email"
+        description: The user email
         in: formData
+        type: string
         required: true
-        type: "string"
       - name: password
-        description: "The user password"
+        description: The user password
         in: formData
+        type: string
         required: true
-        type: "string"
       responses:
         200:
-          description: "user authenticated"
+          description: user authenticated
           schema:
             type: string
         400:
-          description: "incorrect credentials"
+          description: incorrect credentials
 parameters:
   email:
     name: email
     description: "User email"
-    required: true
-    type: string
     in: path
+    type: string
+    required: true
 securityDefinitions:
   Bearer:
     type: apiKey
