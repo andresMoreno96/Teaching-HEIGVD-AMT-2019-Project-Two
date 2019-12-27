@@ -1,23 +1,28 @@
 swagger: "2.0"
 info:
-  description: A simple user account managment API
+  description: simple user account managment API
   version: 1.0.0
   title: AMT User API
-basePath: /auth/
+host: localhost:8080
+basePath: /api
 schemes:
-- "http"
+  - http
 paths:
   /users:
     post:
       operationId: createUser
-      summary: Create new user account
+      description: create new user account
+      consumes:
+        - application/json
+      produces: 
+        - application/json
       parameters:
-      - name: account
-        description: New user account informations
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/User'
+        - name: account
+          description: user account information
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/User'
       responses:
         200:
           description: user account creation success
@@ -26,16 +31,18 @@ paths:
   /users/{email}:
     get:
       operationId: getUser
-      summary: Get user account informations
+      description: get user account information
+      produces: 
+        - application/json
       parameters:
-      - $ref: '#/parameters/email'
+        - $ref: '#/parameters/email'
       security:
-      - Bearer: []
+        - Bearer: []
       responses:
         200:
           description: operation success
           schema:
-            $ref: "#/definitions/UserNoPassword"
+            $ref: '#/definitions/UserNoPassword'
         403:
           description: unauthorized access
         404:
@@ -43,50 +50,52 @@ paths:
   /users/{email}/password-reset:
     post:
       operationId: resetPassword
-      summary: Request password reset
+      description: request password reset
       parameters:
-      - $ref: '#/parameters/email'
+        - $ref: '#/parameters/email'
       responses:
         200:
-         description: request sent
+          description: request sent
         404:
           description: user account not found
   /password:
     post:
       operationId: changePassword
-      summary: Change the user account's password
+      description: change user account password
       consumes:
-      - multipart/form-data
+        - multipart/form-data
       parameters:
-      - name: password
-        description: The new password
-        in: formData
-        required: true
-        type: string
+        - name: password
+          description: new password
+          in: formData
+          required: true
+          type: string
       security:
-      - Bearer: []
+        - Bearer: []
       responses:
         200:
-         description: password changed
+          description: password changed
         404:
           description: unauthorized access
   /authentication:
     post:
       operationId: authenticateUser
-      summary: Authenticate a user
+      description: authenticate a user
       consumes:
-      - multipart/form-data
+        - multipart/form-data
+      produces:
+        - application/json
       parameters:
-      - name: email
-        description: The user email
-        in: formData
-        type: string
-        required: true
-      - name: password
-        description: The user password
-        in: formData
-        type: string
-        required: true
+        - name: email
+          description: user email
+          in: formData
+          type: string
+          required: true
+        - name: password
+          description: user password
+          in: formData
+          type: string
+          required: true
       responses:
         200:
           description: user authenticated
@@ -97,7 +106,7 @@ paths:
 parameters:
   email:
     name: email
-    description: "User email"
+    description: user email
     in: path
     type: string
     required: true
@@ -108,22 +117,22 @@ securityDefinitions:
     in: header
 definitions:
   User:
-    type: "object"
+    type: object
     properties:
       email:
-        type: "string"
+        type: string
       firstName:
-        type: "string"
+        type: string
       lastName:
-        type: "string"
+        type: string
       password:
-        type: "string"
+        type: string
   UserNoPassword:
-    type: "object"
+    type: object
     properties:
       email:
-        type: "string"
+        type: string
       firstName:
-        type: "string"
+        type: string
       lastName:
-        type: "string"
+        type: string
