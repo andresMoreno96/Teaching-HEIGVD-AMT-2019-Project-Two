@@ -1,0 +1,13 @@
+version: "3"
+services:
+  user-api-db:
+    container_name: user-api-db
+    image: mysql:5.7
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+    ports:
+      - 3306:3306
+    volumes:
+      - ./volumes/user-api-data:/var/lib/mysql
