@@ -1,0 +1,138 @@
+swagger: "2.0"
+info:
+  description: simple user account managment API
+  version: 1.0.0
+  title: AMT User API
+host: localhost:8080
+basePath: /api
+schemes:
+  - http
+paths:
+  /users:
+    post:
+      operationId: createUser
+      description: create new user account
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: account
+          description: user account information
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/User'
+      responses:
+        200:
+          description: user account creation success
+        400:
+          description: user account creation fail
+  /users/{email}:
+    get:
+      operationId: getUser
+      description: get user account information
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/email'
+      security:
+        - Bearer: []
+      responses:
+        200:
+          description: operation success
+          schema:
+            $ref: '#/definitions/UserNoPassword'
+        403:
+          description: unauthorized access
+        404:
+          description: user account not found
+  /users/{email}/password-reset:
+    post:
+      operationId: resetPassword
+      description: request password reset
+      parameters:
+        - $ref: '#/parameters/email'
+      responses:
+        200:
+          description: request sent
+        404:
+          description: user account not found
+  /password:
+    post:
+      operationId: changePassword
+      description: change user account password
+      consumes:
+        - multipart/form-data
+      parameters:
+        - name: password
+          description: new password
+          in: formData
+          required: true
+          type: string
+      security:
+        - Bearer: []
+      responses:
+        200:
+          description: password changed
+        404:
+          description: unauthorized access
+  /authentication:
+    post:
+      operationId: authenticateUser
+      description: authenticate a user
+      consumes:
+        - multipart/form-data
+      produces:
+        - application/json
+      parameters:
+        - name: email
+          description: user email
+          in: formData
+          type: string
+          required: true
+        - name: password
+          description: user password
+          in: formData
+          type: string
+          required: true
+      responses:
+        200:
+          description: user authenticated
+          schema:
+            type: string
+        400:
+          description: incorrect credentials
+parameters:
+  email:
+    name: email
+    description: user email
+    in: path
+    type: string
+    required: true
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+definitions:
+  User:
+    type: object
+    properties:
+      email:
+        type: string
+      firstName:
+        type: string
+      lastName:
+        type: string
+      password:
+        type: string
+  UserNoPassword:
+    type: object
+    properties:
+      email:
+        type: string
+      firstName:
+        type: string
+      lastName:
+        type: string
