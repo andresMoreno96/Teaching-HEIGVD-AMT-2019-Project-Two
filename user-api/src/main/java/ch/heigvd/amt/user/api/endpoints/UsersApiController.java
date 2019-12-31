@@ -5,9 +5,13 @@ import ch.heigvd.amt.user.api.model.User;
 import ch.heigvd.amt.user.api.model.UserNoPassword;
 import ch.heigvd.amt.user.entities.UserEntity;
 import ch.heigvd.amt.user.repositories.UsersRepository;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.validation.Valid;
 import java.util.Optional;
@@ -19,11 +23,19 @@ public class UsersApiController implements UsersApi {
     private UsersRepository usersRepository;
 
     @Override
-    public ResponseEntity<Void> createUser(@Valid User user) {
-        UserEntity entity = new UserEntity(user);
-        usersRepository.save(entity);
+    public ResponseEntity<Void> createUser(@ApiParam(required = true) @Valid @RequestBody User user) {
 
-        return ResponseEntity.status(200).build();
+        UserEntity entity = new UserEntity(user);
+
+        if (!usersRepository.existsById(entity.getEmail())) {
+            try {
+                usersRepository.save(entity);
+                return ResponseEntity.status(200).build();
+
+            } catch (DataIntegrityViolationException ignored) {}
+        }
+
+        return ResponseEntity.status(400).build();
     }
 
     @Override
