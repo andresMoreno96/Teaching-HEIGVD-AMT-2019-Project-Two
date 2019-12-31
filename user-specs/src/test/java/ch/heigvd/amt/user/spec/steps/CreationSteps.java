@@ -46,6 +46,23 @@ public class CreationSteps {
                 .password("secret");
     }
 
+    @Given("^I have a user payload with a used email$")
+    public void iHaveAUserPayloadWithAUsedEmail() {
+        user = new User()
+                .email("pot@ato")
+                .firstName("Jack")
+                .lastName("Eri")
+                .password("secret");
+    }
+
+    @Given("^I have a user missing a required field$")
+    public void iHaveAUserMissingARequiredField() {
+        user = new User()
+                .email("cooked@pot.ato")
+                .lastName("Cook")
+                .password("secret");
+    }
+
     @When("^I POST it to the /users endpoint$")
     public void i_POST_it_to_the_users_endpoint() throws Throwable {
         try {
@@ -59,12 +76,10 @@ public class CreationSteps {
             lastApiException = e;
             lastStatusCode = lastApiException.getCode();
         }
-
     }
 
     @Then("^I receive a (\\d+) status code$")
-    public void i_receive_a_status_code(int arg1) throws Throwable {
-        assertEquals(200, lastStatusCode);
+    public void i_receive_a_status_code(int statusCode) throws Throwable {
+        assertEquals(statusCode, lastStatusCode);
     }
-
 }
