@@ -1,6 +1,6 @@
 swagger: "2.0"
 info:
-  description: simple user account managment API
+  description: simple user managment API
   version: 1.0.0
   title: AMT User API
 host: localhost:8080
@@ -11,27 +11,27 @@ paths:
   /users:
     post:
       operationId: createUser
-      description: create new user account
+      description: create new user
       consumes:
         - application/json
       produces: 
         - application/json
       parameters:
-        - name: account
-          description: user account information
+        - name: user
+          description: user information
           in: body
           required: true
           schema:
             $ref: '#/definitions/User'
       responses:
         200:
-          description: user account creation success
+          description: user creation success
         400:
-          description: user account creation fail
+          description: user creation fail
   /users/{email}:
     get:
       operationId: getUser
-      description: get user account information
+      description: get user information
       produces: 
         - application/json
       parameters:
@@ -43,10 +43,10 @@ paths:
           description: operation success
           schema:
             $ref: '#/definitions/UserNoPassword'
-        403:
+        401:
           description: unauthorized access
         404:
-          description: user account not found
+          description: user not found
   /users/{email}/password-reset:
     post:
       operationId: resetPassword
@@ -57,11 +57,11 @@ paths:
         200:
           description: request sent
         404:
-          description: user account not found
-  /password:
+          description: user not found
+  /passwords:
     post:
       operationId: changePassword
-      description: change user account password
+      description: change user password
       consumes:
         - multipart/form-data
       parameters:
@@ -75,7 +75,7 @@ paths:
       responses:
         200:
           description: password changed
-        404:
+        401:
           description: unauthorized access
   /authentication:
     post:
