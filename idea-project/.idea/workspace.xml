@@ -2,15 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="358e4f47-a149-4576-8a97-4f5c02380c95" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/api/util/JwtManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/api/endpoints/UsersApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/api/endpoints/UsersApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-specs/src/test/java/ch/heigvd/amt/user/spec/steps/CreationSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-specs/src/test/java/ch/heigvd/amt/user/spec/steps/CreationSteps.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-specs/src/test/resources/scenarios/creation.feature" beforeDir="false" afterPath="$PROJECT_DIR$/../user-specs/src/test/resources/scenarios/creation.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-api/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../user-api/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -29,7 +35,9 @@
     </option>
   </component>
   <component name="ProjectId" id="1ViX4pKoA4m18PxzBklHC92zKlJ" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -92,7 +100,7 @@
       <option name="presentableId" value="Default" />
       <updated>1577736700827</updated>
       <workItem from="1577736702135" duration="2783000" />
-      <workItem from="1577792301506" duration="5146000" />
+      <workItem from="1577792301506" duration="5571000" />
     </task>
     <servers />
   </component>
