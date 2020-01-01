@@ -4,16 +4,16 @@ Feature: Creation of a user
     Given there is a user management server
 
   Scenario: create a user
-    Given I have a user information payload
+    Given the user pot@ato
     When I POST it to the /users endpoint
     Then I receive a 200 status code
 
-  Scenario: create user with a used email
-    Given I have a user payload with a used email
+  Scenario: create an existing user
+    Given the user pot@ato
     When I POST it to the /users endpoint
     Then I receive a 400 status code
 
-  Scenario: create a user missing a required field
-    Given I have a user missing a required field
+  Scenario: create a malformed user
+    Given a malformed user
     When I POST it to the /users endpoint
     Then I receive a 400 status code
