@@ -2,12 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="358e4f47-a149-4576-8a97-4f5c02380c95" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/api/exceptions/ExceptionHandlers.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/api/util/JwtFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/configuration/FilterConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/api/endpoints/AuthenticationApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/api/endpoints/AuthenticationApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/api/endpoints/UsersApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/api/endpoints/UsersApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/api/util/ApiOriginFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/api/util/ApiOriginFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/api/util/JwtManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/api/util/JwtManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/repositories/UsersRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/repositories/UsersRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-specs/src/test/java/ch/heigvd/amt/user/spec/helpers/Environment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-specs/src/test/java/ch/heigvd/amt/user/spec/helpers/Environment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-specs/src/test/java/ch/heigvd/amt/user/spec/steps/CreationSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-specs/src/test/java/ch/heigvd/amt/user/spec/steps/CreationSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/entities/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/entities/UserEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-api/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../user-api/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-specs/src/test/java/ch/heigvd/amt/user/spec/steps/UserSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-specs/src/test/java/ch/heigvd/amt/user/spec/steps/UserSteps.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../user-specs/src/test/resources/scenarios/creation.feature" beforeDir="false" afterPath="$PROJECT_DIR$/../user-specs/src/test/resources/scenarios/creation.feature" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -60,10 +64,10 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.11013216" />
+    <property name="project.structure.side.proportion" value="0.15862069" />
     <property name="settings.editor.selected.configurable" value="preferences.general" />
   </component>
-  <component name="RunManager" selected="Cucumber java.User specs senarios">
+  <component name="RunManager" selected="Spring Boot.Swagger2SpringBoot">
     <configuration name="User specs senarios" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
       <option name="FILE_PATH" value="$PROJECT_DIR$/../user-specs/src/test/resources/scenarios" />
       <option name="GLUE" value="ch.heigvd.amt.user.spec.steps" />
@@ -104,7 +108,7 @@
       <option name="presentableId" value="Default" />
       <updated>1577736700827</updated>
       <workItem from="1577736702135" duration="2783000" />
-      <workItem from="1577792301506" duration="12841000" />
+      <workItem from="1577792301506" duration="27084000" />
     </task>
     <servers />
   </component>
@@ -125,61 +129,65 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
+    <state x="319" y="114" key="#Assign_Data_Sources" timestamp="1578058049276">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="319" y="114" key="#Assign_Data_Sources/0.0.1440.900@0.0.1440.900" timestamp="1578058049276" />
     <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1577791838628">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1577791838628" />
-    <state x="533" y="166" key="#com.intellij.ide.util.MemberChooser" timestamp="1577896541754">
+    <state x="533" y="166" key="#com.intellij.ide.util.MemberChooser" timestamp="1578049031644">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="533" y="166" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1577896541754" />
+    <state x="533" y="166" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1578049031644" />
     <state x="409" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1577897757152">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="409" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1440.900@0.0.1440.900" timestamp="1577897757152" />
-    <state width="1398" height="339" key="GridCell.Tab.0.bottom" timestamp="1577912213355">
+    <state width="1398" height="696" key="GridCell.Tab.0.bottom" timestamp="1578072000412">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="339" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1577912213355" />
-    <state width="1398" height="339" key="GridCell.Tab.0.center" timestamp="1577912213353">
+    <state width="1398" height="696" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1578072000412" />
+    <state width="1398" height="696" key="GridCell.Tab.0.center" timestamp="1578072000411">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="339" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1577912213353" />
-    <state width="1398" height="339" key="GridCell.Tab.0.left" timestamp="1577912213352">
+    <state width="1398" height="696" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1578072000411" />
+    <state width="1398" height="696" key="GridCell.Tab.0.left" timestamp="1578072000410">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="339" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1577912213352" />
-    <state width="1398" height="339" key="GridCell.Tab.0.right" timestamp="1577912213354">
+    <state width="1398" height="696" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1578072000410" />
+    <state width="1398" height="696" key="GridCell.Tab.0.right" timestamp="1578072000411">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="339" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1577912213354" />
-    <state width="1398" height="297" key="GridCell.Tab.1.bottom" timestamp="1577898651243">
+    <state width="1398" height="696" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1578072000411" />
+    <state width="1398" height="696" key="GridCell.Tab.1.bottom" timestamp="1578072000414">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="297" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1577898651243" />
-    <state width="1398" height="297" key="GridCell.Tab.1.center" timestamp="1577898651242">
+    <state width="1398" height="696" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1578072000414" />
+    <state width="1398" height="696" key="GridCell.Tab.1.center" timestamp="1578072000413">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="297" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1577898651242" />
-    <state width="1398" height="297" key="GridCell.Tab.1.left" timestamp="1577898651241">
+    <state width="1398" height="696" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1578072000413" />
+    <state width="1398" height="696" key="GridCell.Tab.1.left" timestamp="1578072000413">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="297" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1577898651241" />
-    <state width="1398" height="297" key="GridCell.Tab.1.right" timestamp="1577898651242">
+    <state width="1398" height="696" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1578072000413" />
+    <state width="1398" height="696" key="GridCell.Tab.1.right" timestamp="1578072000414">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="297" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1577898651242" />
-    <state x="208" y="31" key="SettingsEditor" timestamp="1577824255968">
+    <state width="1398" height="696" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1578072000414" />
+    <state x="208" y="31" key="SettingsEditor" timestamp="1577912537731">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="208" y="31" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1577824255968" />
+    <state x="208" y="31" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1577912537731" />
     <state x="479" y="378" key="org.jetbrains.plugins.cucumber.inspections.ui.CreateStepDefinitionFileDialog" timestamp="1577894798343">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="479" y="378" key="org.jetbrains.plugins.cucumber.inspections.ui.CreateStepDefinitionFileDialog/0.0.1440.900@0.0.1440.900" timestamp="1577894798343" />
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1577896077357">
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1578051420093">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1577896077357" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1578051420093" />
   </component>
 </project>

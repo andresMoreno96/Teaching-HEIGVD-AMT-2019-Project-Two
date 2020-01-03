@@ -5,33 +5,44 @@ import ch.heigvd.amt.user.api.model.User;
 import ch.heigvd.amt.user.api.model.UserNoPassword;
 import ch.heigvd.amt.user.entities.UserEntity;
 import ch.heigvd.amt.user.repositories.UsersRepository;
-import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
-import javax.validation.Valid;
+import javax.annotation.Resource;
+import javax.persistence.RollbackException;
+import javax.validation.*;
+import javax.xml.crypto.Data;
 import java.util.Optional;
+import java.util.Set;
 
 @Controller
 public class UsersApiController implements UsersApi {
+
+    @Resource
+    Validator validator;
 
     @Autowired
     private UsersRepository usersRepository;
 
     @Override
-    public ResponseEntity<Void> createUser(@ApiParam(required = true) @Valid @RequestBody User user) {
+    public ResponseEntity<Void> createUser(User user) {
 
         UserEntity entity = new UserEntity(user);
 
-        if (!usersRepository.existsById(entity.getEmail())) {
-            try {
-                usersRepository.save(entity);
-                return ResponseEntity.status(200).build();
+        Set<ConstraintViolation<UserEntity>> violations = validator.validate(entity);
+        if (!violations.isEmpty()) {
+            throw new ConstraintViolationException(violations);
+        }
 
-            } catch (DataIntegrityViolationException ignored) {}
+        if (!usersRepository.existsById(entity.getEmail())) {
+            usersRepository.save(entity);
+            return ResponseEntity.status(200).build();
         }
 
         return ResponseEntity.status(400).build();

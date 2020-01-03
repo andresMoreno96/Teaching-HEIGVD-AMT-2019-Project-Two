@@ -17,3 +17,8 @@ Feature: Creation of a user
     Given a malformed user
     When I POST it to the /users endpoint
     Then I receive a 400 status code
+
+  Scenario: create user with malformed email
+    Given the user potato
+    When I POST it to the /users endpoint
+    Then I receive a 400 status code

@@ -3,25 +3,29 @@ package ch.heigvd.amt.user.entities;
 import ch.heigvd.amt.user.api.model.User;
 import ch.heigvd.amt.user.api.model.UserNoPassword;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
-@Entity(name = "user")
-@Table(name = "users", schema = "user-api")
+@Entity
+@Table(schema = "user-api")
 public class UserEntity implements Serializable {
 
     @Id
+    @Email
     private String email;
 
-    @Column(name = "firstname", nullable = false)
+    @NotBlank
+    @Column(nullable = false)
     private String firstName;
 
-    @Column(name = "lastname", nullable = false)
+    @NotBlank
+    @Column(nullable = false)
     private String lastName;
 
+    @NotNull
     @Column(nullable = false)
     private String password;
 

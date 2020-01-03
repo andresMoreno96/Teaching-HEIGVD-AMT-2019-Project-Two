@@ -24,7 +24,7 @@ public class JwtManager {
     public String createToken(String email) {
         return JWT.create().withClaim("email", email).sign(algorithm);
     }
-
+    
     public String verifyToken(String token) {
         DecodedJWT decoded = verifier.verify(token);
         Claim emailClaim = decoded.getClaim("email");

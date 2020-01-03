@@ -32,7 +32,7 @@ public class UserSteps {
 
     @Given("a malformed user")
     public void aMalformedUser() {
-        env.user = new User().email("malformed");
+        env.user = new User().email("malformed@pot.ato");
     }
 
     @And("^there is a user with the credentials (.*) (.*)$")
