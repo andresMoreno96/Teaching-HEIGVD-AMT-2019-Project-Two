@@ -19,7 +19,7 @@ public class AuthenticationApiController implements AuthenticationApi {
 
         if (usersRepository.findByEmailAndPassword(email, password).size() == 1) {
 
-            String token = new JwtManager("potato").createToken(email);
+            String token = JwtManager.getInstance().createToken(email);
             return ResponseEntity.status(200).body(token);
         }
 

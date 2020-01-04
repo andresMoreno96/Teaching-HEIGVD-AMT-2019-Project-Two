@@ -15,6 +15,7 @@ public class UserEntity implements Serializable {
 
     @Id
     @Email
+    @NotBlank
     private String email;
 
     @NotBlank

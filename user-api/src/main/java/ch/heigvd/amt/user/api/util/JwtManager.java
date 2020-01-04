@@ -6,55 +6,74 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
 
+import java.util.Calendar;
 import java.util.Date;
-import java.util.Map;
 
 public class JwtManager {
 
-    private static final String PWD_RESET_ID = "passwordReset";
-    private static final String PWD_RESET_EMAIL = "email";
-    private static final String USER_EMAIL = "user";
+    private static JwtManager instance = null;
+
+    private static final String JWT_SECRET = "secret";
+    private static final String PWD_RESET = "passwordReset";
+    private static final String USER_EMAIL = "email";
 
     private Algorithm algorithm;
     private JWTVerifier verifier;
 
-    public JwtManager(String secret) {
+    private JwtManager(String secret) {
         algorithm = Algorithm.HMAC256(secret);
         verifier = JWT.require(algorithm).build();
     }
 
-    public String passwordResetToken(String id, String email, Date expireOn) {
-        return JWT.create()
-                .withClaim("passwordReset", id)
-                .withClaim("email", email)
-                .withExpiresAt(expireOn)
-                .sign(algorithm);
-    }
+    public static JwtManager getInstance() {
 
-    public boolean verifyPasswordResetToken(String token, String id, String email) {
-
-        Date now = new Date();
-        DecodedJWT decodedJWT = verifier.verify(token);
-
-        if (decodedJWT.getExpiresAt().before(now)) {
-            return false;
+        if (instance == null) {
+            instance = new JwtManager(JWT_SECRET);
         }
 
-        Map<String, Claim> claims = decodedJWT.getClaims();
-
-        return claims.containsKey(PWD_RESET_ID) && claims.containsKey(PWD_RESET_EMAIL)
-                && id.equals(claims.get(PWD_RESET_ID).asString())
-                && email.equals(claims.get(PWD_RESET_EMAIL).asString());
+        return instance;
     }
 
     public String createToken(String email) {
-        return JWT.create().withClaim(USER_EMAIL, email).sign(algorithm);
+        return JWT.create()
+                .withClaim(USER_EMAIL, email)
+                .withExpiresAt(calculateExpiration(24 * 7 * 2))
+                .sign(algorithm);
     }
 
-    public String verifyToken(String token) {
-        DecodedJWT decoded = verifier.verify(token);
-        Claim emailClaim = decoded.getClaim(USER_EMAIL);
+    public String createToken(String email, long pwdReset) {
+        return JWT.create()
+                .withClaim(USER_EMAIL, email)
+                .withClaim(PWD_RESET, pwdReset)
+                .withExpiresAt(calculateExpiration(2))
+                .sign(algorithm);
+    }
 
-        return emailClaim.asString();
+    public DecodedJWT decodeToken(String token) {
+        return verifier.verify(token);
+    }
+
+    public String getUserEmail(DecodedJWT decodedJWT) {
+        Claim claim = decodedJWT.getClaim(USER_EMAIL);
+        return claim != null ? claim.asString() : null;
+    }
+
+    public long getPasswordReset(DecodedJWT decodedJWT) {
+        Claim claim = decodedJWT.getClaim(PWD_RESET);
+        return claim != null ? claim.asLong() : -1;
+    }
+
+    public boolean checkExpiration(DecodedJWT decodedJWT) {
+        return decodedJWT.getExpiresAt().after(new Date());
+    }
+
+    private Date calculateExpiration(int hours) {
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+
+        calendar.add(Calendar.HOUR, hours);
+
+        return calendar.getTime();
     }
 }

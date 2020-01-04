@@ -1,49 +1,51 @@
 package ch.heigvd.amt.user.api.util;
 
-import ch.heigvd.amt.user.repositories.UsersRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import com.auth0.jwt.interfaces.DecodedJWT;
 
 import javax.servlet.*;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+@WebFilter()
 public class JwtFilter implements Filter {
 
     private static final String AUTH_HEADER = "Authorization";
     private static final String AUTH_PREFIX = "Bearer ";
 
+    public static final String EMAIL_REQUEST_ATTRIBUTE = "Email";
+    public static final String PWD_RESET_REQUEST_ATTRIBUTE = "PasswordReset";
+
     private JwtManager jwtManager;
 
-    @Autowired
-    UsersRepository usersRepository;
-
     @Override
-    public void init(FilterConfig filterConfig) {
-        String secret = filterConfig.getInitParameter("jwtSecret");
-        jwtManager = new JwtManager(secret);
+    public void init(FilterConfig filterConfig) throws ServletException {
+        jwtManager = JwtManager.getInstance();
     }
 
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain)
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
             throws IOException, ServletException {
 
-        HttpServletRequest httpRequest = (HttpServletRequest) request;
-        String authHeader = httpRequest.getHeader(AUTH_HEADER);
-
-        System.out.println(authHeader);
+        HttpServletRequest request = (HttpServletRequest) servletRequest;
+        String authHeader = request.getHeader(AUTH_HEADER);
 
         if (authHeader != null && authHeader.startsWith(AUTH_PREFIX)) {
-            String email = jwtManager.verifyToken(authHeader.substring(AUTH_PREFIX.length()));
+            String token = authHeader.substring(AUTH_PREFIX.length());
 
-            if (usersRepository.existsById(email)) {
+            DecodedJWT decodedJWT = jwtManager.decodeToken(token);
+            if (jwtManager.checkExpiration(decodedJWT)) {
 
-                filterChain.doFilter(request, response);
+                String email = jwtManager.getUserEmail(decodedJWT);
+                if (email != null) {
+                    request.setAttribute(EMAIL_REQUEST_ATTRIBUTE, email);
+                }
+
+                long pwdReset = jwtManager.getPasswordReset(decodedJWT);
+                if (pwdReset >= 0) {
+                    request.setAttribute(PWD_RESET_REQUEST_ATTRIBUTE, pwdReset);
+                }
             }
         }
-
-        HttpServletResponse httpResponse = (HttpServletResponse) response;
-        httpResponse.setStatus(HttpStatus.UNAUTHORIZED.value());
     }
 }
