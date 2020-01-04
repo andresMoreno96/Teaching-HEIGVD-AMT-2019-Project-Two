@@ -5,33 +5,24 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.util.Calendar;
 import java.util.Date;
 
+@Component
 public class JwtManager {
 
-    private static JwtManager instance = null;
-
-    private static final String JWT_SECRET = "secret";
     private static final String PWD_RESET = "passwordReset";
     private static final String USER_EMAIL = "email";
 
     private Algorithm algorithm;
     private JWTVerifier verifier;
 
-    private JwtManager(String secret) {
+    public JwtManager(@Value("${app.jwt.secret}") String secret) {
         algorithm = Algorithm.HMAC256(secret);
         verifier = JWT.require(algorithm).build();
-    }
-
-    public static JwtManager getInstance() {
-
-        if (instance == null) {
-            instance = new JwtManager(JWT_SECRET);
-        }
-
-        return instance;
     }
 
     public String createToken(String email) {

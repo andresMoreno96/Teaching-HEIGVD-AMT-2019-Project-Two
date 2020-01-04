@@ -12,14 +12,17 @@ import sun.tools.jconsole.JConsole;
 public class AuthenticationApiController implements AuthenticationApi {
 
     @Autowired
-    UsersRepository usersRepository;
+    private UsersRepository usersRepository;
+
+    @Autowired
+    private JwtManager jwtManager;
 
     @Override
     public ResponseEntity<String> authenticateUser(String email, String password) {
 
         if (usersRepository.findByEmailAndPassword(email, password).size() == 1) {
 
-            String token = JwtManager.getInstance().createToken(email);
+            String token = jwtManager.createToken(email);
             return ResponseEntity.status(200).body(token);
         }
 

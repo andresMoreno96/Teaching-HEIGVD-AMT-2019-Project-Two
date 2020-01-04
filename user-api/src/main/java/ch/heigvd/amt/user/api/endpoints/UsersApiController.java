@@ -34,6 +34,9 @@ public class UsersApiController implements UsersApi {
     @Autowired
     private JavaMailSender mailSender;
 
+    @Autowired
+    private JwtManager jwtManager;
+
     @Override
     public ResponseEntity<Void> createUser(User user) {
 
@@ -75,7 +78,7 @@ public class UsersApiController implements UsersApi {
         PasswordResetEntity pwdReset = new PasswordResetEntity(user.get());
         passwordResetsRepository.save(pwdReset);
 
-        String token = JwtManager.getInstance().createToken(
+        String token = jwtManager.createToken(
                 pwdReset.getUser().getEmail(), pwdReset.getId()
         );
 

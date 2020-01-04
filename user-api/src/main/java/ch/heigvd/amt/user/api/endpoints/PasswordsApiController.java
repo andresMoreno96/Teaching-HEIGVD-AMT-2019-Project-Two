@@ -3,6 +3,7 @@ package ch.heigvd.amt.user.api.endpoints;
 import ch.heigvd.amt.user.api.PasswordsApi;
 import ch.heigvd.amt.user.api.model.User;
 import ch.heigvd.amt.user.api.util.JwtFilter;
+import ch.heigvd.amt.user.api.util.JwtManager;
 import ch.heigvd.amt.user.entities.PasswordResetEntity;
 import ch.heigvd.amt.user.entities.UserEntity;
 import ch.heigvd.amt.user.repositories.PasswordResetsRepository;

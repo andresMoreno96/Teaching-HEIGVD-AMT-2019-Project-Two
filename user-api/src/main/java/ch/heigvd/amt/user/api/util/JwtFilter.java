@@ -1,12 +1,14 @@
 package ch.heigvd.amt.user.api.util;
 
 import com.auth0.jwt.interfaces.DecodedJWT;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.*;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
+@Component
 public class JwtFilter implements Filter {
 
     private static final String AUTH_HEADER = "Authorization";
@@ -15,12 +17,8 @@ public class JwtFilter implements Filter {
     public static final String EMAIL_REQUEST_ATTRIBUTE = "Email";
     public static final String PWD_RESET_REQUEST_ATTRIBUTE = "PasswordReset";
 
+    @Autowired
     private JwtManager jwtManager;
-
-    @Override
-    public void init(FilterConfig filterConfig) {
-        jwtManager = JwtManager.getInstance();
-    }
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
@@ -44,8 +42,6 @@ public class JwtFilter implements Filter {
                 if (pwdReset >= 0) {
                     request.setAttribute(PWD_RESET_REQUEST_ATTRIBUTE, pwdReset);
                 }
-
-                System.out.printf("%s -> %s, %s\n", token, email, pwdReset);
             }
         }
 
