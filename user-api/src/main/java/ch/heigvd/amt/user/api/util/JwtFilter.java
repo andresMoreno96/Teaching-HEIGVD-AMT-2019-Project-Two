@@ -20,7 +20,7 @@ public class JwtFilter implements Filter {
     UsersRepository usersRepository;
 
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
+    public void init(FilterConfig filterConfig) {
         String secret = filterConfig.getInitParameter("jwtSecret");
         jwtManager = new JwtManager(secret);
     }

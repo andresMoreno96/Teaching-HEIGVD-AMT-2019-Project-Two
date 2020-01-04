@@ -14,7 +14,7 @@ public class FilterConfiguration {
         JwtFilter filter = new JwtFilter();
 
         registrationBean.setFilter(filter);
-        registrationBean.addUrlPatterns("/users/*");
+        registrationBean.addUrlPatterns("/nope/*");
         registrationBean.setOrder(1);
         registrationBean.addInitParameter("jwtSecret", "secret");
         return registrationBean;

@@ -15,13 +15,10 @@ public class JwtManager {
     private static final String PWD_RESET_EMAIL = "email";
     private static final String USER_EMAIL = "user";
 
-    private String secret;
     private Algorithm algorithm;
     private JWTVerifier verifier;
 
     public JwtManager(String secret) {
-        this.secret = secret;
-
         algorithm = Algorithm.HMAC256(secret);
         verifier = JWT.require(algorithm).build();
     }
