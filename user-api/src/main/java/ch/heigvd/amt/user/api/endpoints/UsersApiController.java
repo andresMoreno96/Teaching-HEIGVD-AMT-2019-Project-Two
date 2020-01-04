@@ -10,6 +10,8 @@ import ch.heigvd.amt.user.repositories.PasswordResetsRepository;
 import ch.heigvd.amt.user.repositories.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 
 import javax.annotation.Resource;
@@ -28,6 +30,9 @@ public class UsersApiController implements UsersApi {
 
     @Autowired
     private PasswordResetsRepository passwordResetsRepository;
+
+    @Autowired
+    private JavaMailSender mailSender;
 
     @Override
     public ResponseEntity<Void> createUser(User user) {
@@ -74,8 +79,12 @@ public class UsersApiController implements UsersApi {
                 pwdReset.getUser().getEmail(), pwdReset.getId()
         );
 
-        // TODO: send email
-        System.out.println(token);
+        // Send email
+        SimpleMailMessage mail = new SimpleMailMessage();
+        mail.setTo(user.get().getEmail());
+        mail.setSubject("Password Reset Token");
+        mail.setText(token);
+        mailSender.send(mail);
 
         return ResponseEntity.status(200).build();
     }
