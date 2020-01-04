@@ -31,15 +31,18 @@ public class PasswordsApiController implements PasswordsApi {
         String email = (String) request.getAttribute(JwtFilter.EMAIL_REQUEST_ATTRIBUTE);
         Long id = (Long) request.getAttribute(JwtFilter.PWD_RESET_REQUEST_ATTRIBUTE);
 
-        PasswordResetEntity reset = passwordResetsRepository.findByIdAndUserEmail(id, email);
+        if (email != null && id != null) {
 
-        if (reset != null) {
+            PasswordResetEntity reset = passwordResetsRepository.findByIdAndUserEmail(id, email);
 
-            reset.getUser().setPassword(password);
-            usersRepository.save(reset.getUser());
-            passwordResetsRepository.delete(reset);
+            if (reset != null) {
 
-            return ResponseEntity.status(200).build();
+                reset.getUser().setPassword(password);
+                usersRepository.save(reset.getUser());
+                passwordResetsRepository.delete(reset);
+
+                return ResponseEntity.status(200).build();
+            }
         }
 
         return ResponseEntity.status(401).build();

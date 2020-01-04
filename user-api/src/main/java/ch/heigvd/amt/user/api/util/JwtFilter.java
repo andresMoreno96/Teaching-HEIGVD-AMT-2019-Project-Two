@@ -44,6 +44,8 @@ public class JwtFilter implements Filter {
                 if (pwdReset >= 0) {
                     request.setAttribute(PWD_RESET_REQUEST_ATTRIBUTE, pwdReset);
                 }
+
+                System.out.printf("%s -> %s, %s\n", token, email, pwdReset);
             }
         }
 

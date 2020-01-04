@@ -6,9 +6,6 @@
       <change beforePath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/api/endpoints/PasswordsApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/api/endpoints/PasswordsApiController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/api/util/JwtFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/api/util/JwtFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/configuration/FilterConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/configuration/FilterConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/entities/PasswordResetEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/entities/PasswordResetEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/repositories/PasswordResetsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/repositories/PasswordResetsRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-api/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../user-api/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +58,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.15862069" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.general" />
   </component>
   <component name="RecentsManager">
@@ -109,7 +107,7 @@
       <option name="presentableId" value="Default" />
       <updated>1577736700827</updated>
       <workItem from="1577736702135" duration="2783000" />
-      <workItem from="1577792301506" duration="37473000" />
+      <workItem from="1577792301506" duration="37933000" />
     </task>
     <servers />
   </component>
@@ -150,38 +148,38 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900@0.0.1440.900" timestamp="1578143860005" />
-    <state width="1398" height="569" key="GridCell.Tab.0.bottom" timestamp="1578150772924">
+    <state width="1398" height="323" key="GridCell.Tab.0.bottom" timestamp="1578151244345">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="569" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1578150772924" />
-    <state width="1398" height="569" key="GridCell.Tab.0.center" timestamp="1578150772922">
+    <state width="1398" height="323" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1578151244345" />
+    <state width="1398" height="323" key="GridCell.Tab.0.center" timestamp="1578151244344">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="569" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1578150772922" />
-    <state width="1398" height="569" key="GridCell.Tab.0.left" timestamp="1578150772920">
+    <state width="1398" height="323" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1578151244344" />
+    <state width="1398" height="323" key="GridCell.Tab.0.left" timestamp="1578151244343">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="569" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1578150772920" />
-    <state width="1398" height="569" key="GridCell.Tab.0.right" timestamp="1578150772922">
+    <state width="1398" height="323" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1578151244343" />
+    <state width="1398" height="323" key="GridCell.Tab.0.right" timestamp="1578151244344">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="569" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1578150772922" />
-    <state width="1398" height="569" key="GridCell.Tab.1.bottom" timestamp="1578150772926">
+    <state width="1398" height="323" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1578151244344" />
+    <state width="1398" height="323" key="GridCell.Tab.1.bottom" timestamp="1578151244347">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="569" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1578150772926" />
-    <state width="1398" height="569" key="GridCell.Tab.1.center" timestamp="1578150772925">
+    <state width="1398" height="323" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1578151244347" />
+    <state width="1398" height="323" key="GridCell.Tab.1.center" timestamp="1578151244346">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="569" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1578150772925" />
-    <state width="1398" height="569" key="GridCell.Tab.1.left" timestamp="1578150772924">
+    <state width="1398" height="323" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1578151244346" />
+    <state width="1398" height="323" key="GridCell.Tab.1.left" timestamp="1578151244346">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="569" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1578150772924" />
-    <state width="1398" height="569" key="GridCell.Tab.1.right" timestamp="1578150772925">
+    <state width="1398" height="323" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1578151244346" />
+    <state width="1398" height="323" key="GridCell.Tab.1.right" timestamp="1578151244347">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="569" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1578150772925" />
+    <state width="1398" height="323" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1578151244347" />
     <state width="1398" height="569" key="GridCell.Tab.2.bottom" timestamp="1578150772927">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
