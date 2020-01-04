@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="358e4f47-a149-4576-8a97-4f5c02380c95" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/api/endpoints/PasswordsApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/api/endpoints/PasswordsApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/api/util/JwtFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/api/util/JwtFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/configuration/FilterConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/configuration/FilterConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-specs/src/test/java/ch/heigvd/amt/user/spec/steps/UserSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-specs/src/test/java/ch/heigvd/amt/user/spec/steps/UserSteps.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +64,7 @@
       <recent name="ch.heigvd.amt.user.api.util" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.Swagger2SpringBoot">
+  <component name="RunManager" selected="Cucumber java.User specs senarios">
     <configuration name="User specs senarios" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
       <option name="FILE_PATH" value="$PROJECT_DIR$/../user-specs/src/test/resources/scenarios" />
       <option name="GLUE" value="ch.heigvd.amt.user.spec.steps" />
@@ -107,7 +105,7 @@
       <option name="presentableId" value="Default" />
       <updated>1577736700827</updated>
       <workItem from="1577736702135" duration="2783000" />
-      <workItem from="1577792301506" duration="37933000" />
+      <workItem from="1577792301506" duration="39541000" />
     </task>
     <servers />
   </component>
@@ -148,22 +146,22 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900@0.0.1440.900" timestamp="1578143860005" />
-    <state width="1398" height="323" key="GridCell.Tab.0.bottom" timestamp="1578151244345">
+    <state width="1398" height="410" key="GridCell.Tab.0.bottom" timestamp="1578152166817">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="323" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1578151244345" />
-    <state width="1398" height="323" key="GridCell.Tab.0.center" timestamp="1578151244344">
+    <state width="1398" height="410" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1578152166817" />
+    <state width="1398" height="410" key="GridCell.Tab.0.center" timestamp="1578152166816">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="323" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1578151244344" />
-    <state width="1398" height="323" key="GridCell.Tab.0.left" timestamp="1578151244343">
+    <state width="1398" height="410" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1578152166816" />
+    <state width="1398" height="410" key="GridCell.Tab.0.left" timestamp="1578152166815">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="323" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1578151244343" />
-    <state width="1398" height="323" key="GridCell.Tab.0.right" timestamp="1578151244344">
+    <state width="1398" height="410" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1578152166815" />
+    <state width="1398" height="410" key="GridCell.Tab.0.right" timestamp="1578152166817">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="323" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1578151244344" />
+    <state width="1398" height="410" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1578152166817" />
     <state width="1398" height="323" key="GridCell.Tab.1.bottom" timestamp="1578151244347">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -204,10 +202,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="400" y="85" width="639" height="729" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1578150290746" />
-    <state x="479" y="378" key="org.jetbrains.plugins.cucumber.inspections.ui.CreateStepDefinitionFileDialog" timestamp="1577894798343">
+    <state x="479" y="378" key="org.jetbrains.plugins.cucumber.inspections.ui.CreateStepDefinitionFileDialog" timestamp="1578151782451">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="479" y="378" key="org.jetbrains.plugins.cucumber.inspections.ui.CreateStepDefinitionFileDialog/0.0.1440.900@0.0.1440.900" timestamp="1577894798343" />
+    <state x="479" y="378" key="org.jetbrains.plugins.cucumber.inspections.ui.CreateStepDefinitionFileDialog/0.0.1440.900@0.0.1440.900" timestamp="1578151782451" />
     <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1578143998446">
       <screen x="0" y="0" width="1440" height="900" />
     </state>

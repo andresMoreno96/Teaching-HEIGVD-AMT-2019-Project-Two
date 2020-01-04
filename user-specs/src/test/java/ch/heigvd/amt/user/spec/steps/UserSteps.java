@@ -5,8 +5,7 @@ import ch.heigvd.amt.user.api.dto.User;
 import ch.heigvd.amt.user.spec.helpers.Environment;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
-
-import java.io.IOException;
+import cucumber.api.java.en.When;
 
 public class UserSteps {
 
@@ -20,7 +19,7 @@ public class UserSteps {
         return new User().email("pot@ato").firstName("Jack").lastName("Eri").password("secret");
     }
 
-    @Given("^the user (.*)$")
+    @When("^the user (.*)$")
     public void theUser(String email) throws Throwable {
         env.user = createUser().email(email);
     }
