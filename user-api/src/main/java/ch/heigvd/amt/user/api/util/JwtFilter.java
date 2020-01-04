@@ -7,7 +7,6 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
-@WebFilter()
 public class JwtFilter implements Filter {
 
     private static final String AUTH_HEADER = "Authorization";
@@ -19,7 +18,7 @@ public class JwtFilter implements Filter {
     private JwtManager jwtManager;
 
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
+    public void init(FilterConfig filterConfig) {
         jwtManager = JwtManager.getInstance();
     }
 
@@ -47,5 +46,7 @@ public class JwtFilter implements Filter {
                 }
             }
         }
+
+        filterChain.doFilter(servletRequest, servletResponse);
     }
 }

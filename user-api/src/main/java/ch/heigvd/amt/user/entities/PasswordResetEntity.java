@@ -15,32 +15,18 @@ public class PasswordResetEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false)
-    private Date expireOn;
-
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(optional = false)
     private UserEntity user;
 
     public PasswordResetEntity() {}
 
     public PasswordResetEntity(UserEntity user) {
         this();
-
         setUser(user);
-
-        Date now = new Date();
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(now);
-        calendar.add(Calendar.HOUR, 2);
-        setExpireOn(calendar.getTime());
     }
 
     public long getId() {
         return id;
-    }
-
-    public Date getExpireOn() {
-        return expireOn;
     }
 
     public UserEntity getUser() {
@@ -49,10 +35,6 @@ public class PasswordResetEntity implements Serializable {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public void setExpireOn(Date expireOn) {
-        this.expireOn = expireOn;
     }
 
     public void setUser(UserEntity user) {
