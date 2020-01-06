@@ -22,20 +22,21 @@ import java.util.Set;
 @Controller
 public class UsersApiController implements UsersApi {
 
-    @Resource
-    Validator validator;
 
-    @Autowired
     private UsersRepository usersRepository;
-
-    @Autowired
     private PasswordResetsRepository passwordResetsRepository;
-
-    @Autowired
-    private JavaMailSender mailSender;
-
-    @Autowired
     private JwtManager jwtManager;
+    private JavaMailSender mailSender;
+    private Validator validator;
+
+    public UsersApiController(UsersRepository usersRepository, PasswordResetsRepository passwordResetsRepository,
+                              JwtManager jwtManager, JavaMailSender mailSender, Validator validator) {
+        this.usersRepository = usersRepository;
+        this.passwordResetsRepository = passwordResetsRepository;
+        this.jwtManager = jwtManager;
+        this.mailSender = mailSender;
+        this.validator = validator;
+    }
 
     @Override
     public ResponseEntity<Void> createUser(User user) {

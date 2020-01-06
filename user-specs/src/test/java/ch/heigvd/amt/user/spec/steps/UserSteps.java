@@ -19,7 +19,7 @@ public class UserSteps {
         return new User().email("pot@ato").firstName("Jack").lastName("Eri").password("secret");
     }
 
-    @When("^the user (.*)$")
+    @Given("^the user (.*)$")
     public void theUser(String email) throws Throwable {
         env.user = createUser().email(email);
     }
