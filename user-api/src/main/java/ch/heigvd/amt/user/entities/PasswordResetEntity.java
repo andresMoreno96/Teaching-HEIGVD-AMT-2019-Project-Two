@@ -8,7 +8,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 @Entity
-@Table(schema = "user-api")
+@Table(schema = "user_api")
 public class PasswordResetEntity implements Serializable {
 
     @Id

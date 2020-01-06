@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.Set;
 
 @Entity(name = "Quest")
-@Table(name = "quests", schema = "adventurer-api")
+@Table(name = "quests", schema = "adventurer_api")
 public class QuestEntity implements Serializable {
 
     @Id

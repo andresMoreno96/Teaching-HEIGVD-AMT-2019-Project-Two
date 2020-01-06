@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d625838d-3233-4fba-a41a-8eac3191c00c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../adventurer-specs/src/test/java/ch/heigvd/amt/adventurer/spec/helpers/Environment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../adventurer-specs/src/test/java/ch/heigvd/amt/adventurer/spec/helpers/Environment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/api/endpoints/AuthenticationApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/api/endpoints/AuthenticationApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../adventurer-api/src/main/java/ch/heigvd/amt/adventurer/entities/AdventurerEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../adventurer-api/src/main/java/ch/heigvd/amt/adventurer/entities/AdventurerEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../adventurer-api/src/main/java/ch/heigvd/amt/adventurer/entities/QuestEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../adventurer-api/src/main/java/ch/heigvd/amt/adventurer/entities/QuestEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../adventurer-api/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../adventurer-api/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/entities/PasswordResetEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/entities/PasswordResetEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/entities/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/entities/UserEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-api/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../user-api/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +29,10 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="ExpandSpringBootJavaOptionsPanel" value="true" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -33,7 +42,7 @@
     <property name="settings.editor.selected.configurable" value="preferences.general" />
     <property name="show.run.dashboard.notification" value="false" />
   </component>
-  <component name="RunManager" selected="Cucumber java.User Specs">
+  <component name="RunManager" selected="Spring Boot.User API">
     <configuration name="Adventurer Specs" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
       <option name="FILE_PATH" value="$PROJECT_DIR$/../adventurer-specs/src/test/resources/scenarios" />
       <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
@@ -95,7 +104,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1578306728739</updated>
-      <workItem from="1578306733786" duration="739000" />
+      <workItem from="1578306733786" duration="4230000" />
     </task>
     <servers />
   </component>
@@ -107,30 +116,50 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="320" y="115" key="#Project_Structure/0.0.1440.900@0.0.1440.900" timestamp="1578306789423" />
-    <state x="200" y="159" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578307456149">
+    <state x="119" y="43" width="1184" height="775" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578316938623">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="200" y="159" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1578307456149" />
+    <state x="119" y="43" width="1184" height="775" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1578316938623" />
     <state x="457" y="241" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1578307126479">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="457" y="241" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1440.900@0.0.1440.900" timestamp="1578307126479" />
-    <state width="1398" height="329" key="GridCell.Tab.0.bottom" timestamp="1578307481586">
+    <state x="323" y="237" key="EnvironmentVariablesDialog" timestamp="1578316744769">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="329" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1578307481586" />
-    <state width="1398" height="329" key="GridCell.Tab.0.center" timestamp="1578307481584">
+    <state x="323" y="237" key="EnvironmentVariablesDialog/0.0.1440.900@0.0.1440.900" timestamp="1578316744769" />
+    <state width="1398" height="189" key="GridCell.Tab.0.bottom" timestamp="1578318035745">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="329" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1578307481584" />
-    <state width="1398" height="329" key="GridCell.Tab.0.left" timestamp="1578307481584">
+    <state width="1398" height="189" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1578318035745" />
+    <state width="1398" height="189" key="GridCell.Tab.0.center" timestamp="1578318035744">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="329" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1578307481584" />
-    <state width="1398" height="329" key="GridCell.Tab.0.right" timestamp="1578307481585">
+    <state width="1398" height="189" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1578318035744" />
+    <state width="1398" height="189" key="GridCell.Tab.0.left" timestamp="1578318035743">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="329" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1578307481585" />
+    <state width="1398" height="189" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1578318035743" />
+    <state width="1398" height="189" key="GridCell.Tab.0.right" timestamp="1578318035744">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="189" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1578318035744" />
+    <state width="1398" height="189" key="GridCell.Tab.1.bottom" timestamp="1578318035747">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="189" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1578318035747" />
+    <state width="1398" height="189" key="GridCell.Tab.1.center" timestamp="1578318035746">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="189" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1578318035746" />
+    <state width="1398" height="189" key="GridCell.Tab.1.left" timestamp="1578318035746">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="189" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1578318035746" />
+    <state width="1398" height="189" key="GridCell.Tab.1.right" timestamp="1578318035746">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="189" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1578318035746" />
     <state x="370" y="150" key="NewModule_or_Project.wizard" timestamp="1578306823595">
       <screen x="0" y="0" width="1440" height="900" />
     </state>

@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Entity
-@Table(schema = "user-api")
+@Table(schema = "user_api")
 public class UserEntity implements Serializable {
 
     @Id
