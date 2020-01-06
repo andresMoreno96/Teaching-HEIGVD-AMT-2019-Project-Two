@@ -23,3 +23,14 @@ services:
       - 3307:3306
     volumes:
       - ./volumes/adventurer-api-data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+     - PMA_HOST=db
+    restart: always
+    depends_on:
+     - user-api-db
+     - adventurer-api-db
+    ports:
+     - 8888:80
