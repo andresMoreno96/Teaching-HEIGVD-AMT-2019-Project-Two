@@ -27,7 +27,7 @@ services:
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     environment:
-     - PMA_HOST=db
+     - PMA_HOSTS=user-api-db,adventurer-api-db
     restart: always
     depends_on:
      - user-api-db
