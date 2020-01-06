@@ -6,7 +6,6 @@ import ch.heigvd.amt.user.repositories.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import sun.tools.jconsole.JConsole;
 
 @Controller
 public class AuthenticationApiController implements AuthenticationApi {

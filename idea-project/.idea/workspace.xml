@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d625838d-3233-4fba-a41a-8eac3191c00c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../adventurer-specs/src/test/java/ch/heigvd/amt/adventurer/spec/helpers/Environment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../adventurer-specs/src/test/java/ch/heigvd/amt/adventurer/spec/helpers/Environment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/api/endpoints/AuthenticationApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/api/endpoints/AuthenticationApiController.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1W1ASkhUkJwV91LufxyFIurvGuL" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="ExpandSpringBootJavaOptionsPanel" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.20229885" />
+    <property name="settings.editor.selected.configurable" value="preferences.general" />
+    <property name="show.run.dashboard.notification" value="false" />
+  </component>
+  <component name="RunManager" selected="Cucumber java.User Specs">
+    <configuration name="Adventurer Specs" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
+      <option name="FILE_PATH" value="$PROJECT_DIR$/../adventurer-specs/src/test/resources/scenarios" />
+      <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
+      <module name="adventurer-specs" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="User Specs" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
+      <option name="FILE_PATH" value="$PROJECT_DIR$/../user-specs/src/test/resources/scenarios" />
+      <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
+      <module name="user-specs" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Adventurer API" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="adventurer" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="ch.heigvd.amt.adventurer.Swagger2SpringBoot" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="User API" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="user" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="ch.heigvd.amt.user.Swagger2SpringBoot" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Cucumber java.User Specs" />
+      <item itemvalue="Cucumber java.Adventurer Specs" />
+      <item itemvalue="Spring Boot.Adventurer API" />
+      <item itemvalue="Spring Boot.User API" />
+    </list>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d625838d-3233-4fba-a41a-8eac3191c00c" name="Default Changelist" comment="" />
+      <created>1578306728739</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1578306728739</updated>
+      <workItem from="1578306733786" duration="739000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="320" y="115" key="#Project_Structure" timestamp="1578306789423">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="320" y="115" key="#Project_Structure/0.0.1440.900@0.0.1440.900" timestamp="1578306789423" />
+    <state x="200" y="159" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578307456149">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="200" y="159" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1578307456149" />
+    <state x="457" y="241" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1578307126479">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="457" y="241" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1440.900@0.0.1440.900" timestamp="1578307126479" />
+    <state width="1398" height="329" key="GridCell.Tab.0.bottom" timestamp="1578307481586">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="329" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1578307481586" />
+    <state width="1398" height="329" key="GridCell.Tab.0.center" timestamp="1578307481584">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="329" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1578307481584" />
+    <state width="1398" height="329" key="GridCell.Tab.0.left" timestamp="1578307481584">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="329" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1578307481584" />
+    <state width="1398" height="329" key="GridCell.Tab.0.right" timestamp="1578307481585">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="329" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1578307481585" />
+    <state x="370" y="150" key="NewModule_or_Project.wizard" timestamp="1578306823595">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="370" y="150" key="NewModule_or_Project.wizard/0.0.1440.900@0.0.1440.900" timestamp="1578306823595" />
+    <state x="208" y="31" width="1134" height="837" key="SettingsEditor" timestamp="1578307381439">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="208" y="31" width="1134" height="837" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1578307381439" />
+  </component>
+</project>

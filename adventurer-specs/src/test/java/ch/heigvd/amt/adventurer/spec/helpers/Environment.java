@@ -1,5 +1,7 @@
 package ch.heigvd.amt.adventurer.spec.helpers;
 
+import ch.heigvd.amt.adventurer.ApiException;
+import ch.heigvd.amt.adventurer.ApiResponse;
 import ch.heigvd.amt.adventurer.api.DefaultApi;
 
 import java.io.IOException;
@@ -11,8 +13,6 @@ import java.util.Properties;
 public class Environment {
 
     private static DefaultApi api = null;
-
-    public User user;
 
     public ApiResponse apiResponse;
     public ApiException apiException;

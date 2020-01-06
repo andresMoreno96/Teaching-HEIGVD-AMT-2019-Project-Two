@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../adventurer-api/adventurer.iml" filepath="$PROJECT_DIR$/../adventurer-api/adventurer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../adventurer-specs/adventurer-specs.iml" filepath="$PROJECT_DIR$/../adventurer-specs/adventurer-specs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../user-api/user.iml" filepath="$PROJECT_DIR$/../user-api/user.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../user-specs/user-specs.iml" filepath="$PROJECT_DIR$/../user-specs/user-specs.iml" />
+    </modules>
+  </component>
+</project>
