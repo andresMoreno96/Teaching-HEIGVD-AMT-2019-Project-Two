@@ -2,6 +2,8 @@ package ch.heigvd.amt.user.spec.steps;
 
 import ch.heigvd.amt.user.ApiException;
 import ch.heigvd.amt.user.spec.helpers.Environment;
+import ch.heigvd.amt.user.spec.helpers.JwtManager;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -12,15 +14,20 @@ import org.subethamail.wiser.WiserMessage;
 import javax.activation.DataHandler;
 import java.io.ByteArrayOutputStream;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
 public class PasswordResetRequestSteps {
 
     private Environment env;
+    private JwtManager jwtManager;
     private Wiser wiser;
     private int emailCount;
     private String token;
 
-    public PasswordResetRequestSteps(Environment env) {
+    public PasswordResetRequestSteps(Environment env, JwtManager jwtManager) {
         this.env = env;
+        this.jwtManager = jwtManager;
         this.wiser = new Wiser();
     }
 
@@ -28,7 +35,7 @@ public class PasswordResetRequestSteps {
     public void iPostToUsersPasswordReset(String email) throws Throwable {
 
         wiser.setHostname("localhost");
-        wiser.setPort(3030);
+        wiser.setPort(2525);
         wiser.start();
         emailCount = wiser.getMessages().size();
 
@@ -61,9 +68,21 @@ public class PasswordResetRequestSteps {
         token = baos.toString();
     }
 
-    @And("^the jwt is for a password reset for the user (.*)$")
-    public void theJwtIsForAPasswordResetForTheUserRequestPotAto(String email) throws Throwable {
-        //TODO: check token
-        System.out.println(token);
+
+    @Then("^the jwt is for a password reset for (.*)$")
+    public void iReceiveAPasswordResetJwtFor(String email) throws Throwable {
+        DecodedJWT decodedJWT = jwtManager.decodeToken(token);
+
+        assertEquals(decodedJWT.getClaims().size(), 3);
+        assertNotNull(decodedJWT.getClaim(JwtManager.PWD_RESET));
+        assertNotNull(decodedJWT.getClaim(JwtManager.USER_EMAIL));
+        assertNotNull(decodedJWT.getExpiresAt());
+
+        assertEquals(email, jwtManager.getUserEmail(decodedJWT));
+    }
+
+    @And("^no email si sent$")
+    public void noEmailSiSent() {
+        assertEquals(emailCount, wiser.getMessages().size());
     }
 }
