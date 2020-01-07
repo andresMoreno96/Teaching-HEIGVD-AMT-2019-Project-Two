@@ -1,5 +1,6 @@
 package ch.heigvd.amt.user.api.util;
 
+import ch.heigvd.amt.user.services.JwtManager;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

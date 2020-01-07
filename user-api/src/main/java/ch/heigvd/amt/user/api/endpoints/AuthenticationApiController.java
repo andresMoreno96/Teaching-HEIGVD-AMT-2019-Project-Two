@@ -1,7 +1,7 @@
 package ch.heigvd.amt.user.api.endpoints;
 
 import ch.heigvd.amt.user.api.AuthenticationApi;
-import ch.heigvd.amt.user.api.util.JwtManager;
+import ch.heigvd.amt.user.services.JwtManager;
 import ch.heigvd.amt.user.repositories.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
