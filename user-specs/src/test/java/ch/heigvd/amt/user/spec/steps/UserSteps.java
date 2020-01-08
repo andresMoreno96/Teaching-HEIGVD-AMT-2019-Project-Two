@@ -5,12 +5,8 @@ import ch.heigvd.amt.user.api.dto.User;
 import ch.heigvd.amt.user.api.dto.UserNoPassword;
 import ch.heigvd.amt.user.spec.helpers.Environment;
 import ch.heigvd.amt.user.spec.helpers.JwtManager;
-import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
-import gherkin.lexer.Th;
-import io.swagger.annotations.Api;
 import org.junit.Assert;
 
 public class UserSteps {
@@ -45,25 +41,32 @@ public class UserSteps {
         try {
             Environment.getApi().createUser(
                     new User().email(email).password(password)
-                    .firstName("Jack").lastName("Eri")
-            );
+                    .firstName("Jack").lastName("Eri"));
         } catch (ApiException ignore) {}
     }
 
     @Given("^there is a user with the information (.*) (.*) (.*)$")
-    public void thereIsAUserWithTheCredentials(String email, String firstName, String lastName) throws Throwable {
+    public void thereIsAUserWithTheInformation(String email, String firstName, String lastName) throws Throwable {
         UserNoPassword user = fetchUser(email);
 
-        Assert.assertNotNull(user);
-        Assert.assertEquals(email, user.getEmail());
-        Assert.assertEquals(firstName, user.getFirstName());
-        Assert.assertEquals(lastName, user.getLastName());
+        if (user != null) {
+            Assert.assertEquals(email, user.getEmail());
+            Assert.assertEquals(firstName, user.getFirstName());
+            Assert.assertEquals(lastName, user.getLastName());
+        } else {
+            try {
+                Environment.getApi().createUser(
+                        new User().email(email).password("secret")
+                                .firstName(firstName).lastName(lastName));
+            } catch (ApiException ignore) {}
+        }
     }
 
     @Then("^I can retrieve the user information$")
     public void iCanRetrieveTheUserInformation() throws Throwable {
         UserNoPassword user = fetchUser(env.user.getEmail());
 
+        Assert.assertNotNull(user);
         Assert.assertEquals(user.getEmail(), env.user.getEmail());
         Assert.assertEquals(user.getFirstName(), env.user.getFirstName());
         Assert.assertEquals(user.getLastName(), env.user.getLastName());
@@ -89,6 +92,8 @@ public class UserSteps {
             return Environment.getApi().getUser(email);
         } catch(ApiException e) {
             return null;
+        } finally {
+            Environment.getApi().getApiClient().setApiKey(null);
         }
     }
 }

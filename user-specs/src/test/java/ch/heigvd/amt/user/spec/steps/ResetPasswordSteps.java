@@ -17,7 +17,7 @@ import java.io.ByteArrayOutputStream;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-public class PasswordResetRequestSteps {
+public class ResetPasswordSteps {
 
     private Environment env;
     private JwtManager jwtManager;
@@ -25,7 +25,7 @@ public class PasswordResetRequestSteps {
     private int emailCount;
     private String token;
 
-    public PasswordResetRequestSteps(Environment env, JwtManager jwtManager) {
+    public ResetPasswordSteps(Environment env, JwtManager jwtManager) {
         this.env = env;
         this.jwtManager = jwtManager;
         this.wiser = new Wiser();

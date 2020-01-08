@@ -48,12 +48,12 @@ public class JwtManager {
 
     public String getUserEmail(DecodedJWT decodedJWT) {
         Claim claim = decodedJWT.getClaim(USER_EMAIL);
-        return claim != null ? claim.asString() : null;
+        return !claim.isNull() ? claim.asString() : null;
     }
 
     public long getPasswordReset(DecodedJWT decodedJWT) {
         Claim claim = decodedJWT.getClaim(PWD_RESET);
-        return claim != null ? claim.asLong() : -1;
+        return !claim.isNull() ? claim.asLong() : -1;
     }
 
     public boolean checkExpiration(DecodedJWT decodedJWT) {

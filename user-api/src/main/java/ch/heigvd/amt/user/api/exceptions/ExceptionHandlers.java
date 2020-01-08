@@ -13,13 +13,11 @@ public class ExceptionHandlers {
 
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)
     @ExceptionHandler(ConstraintViolationException.class)
-    public void handleConstrainViolation(ConstraintViolationException ex) {
-        System.out.printf("ERROR: %s\n", ex);
+    public void handleConstrainViolation() {
     }
 
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)
     @ExceptionHandler(DataIntegrityViolationException.class)
-    public void handleDataIntegrityViolation(DataIntegrityViolationException ex) {
-        System.out.printf("ERROR: %s\n", ex);
+    public void handleDataIntegrityViolation() {
     }
 }

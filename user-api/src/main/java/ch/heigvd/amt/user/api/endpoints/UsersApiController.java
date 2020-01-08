@@ -3,6 +3,7 @@ package ch.heigvd.amt.user.api.endpoints;
 import ch.heigvd.amt.user.api.UsersApi;
 import ch.heigvd.amt.user.api.model.User;
 import ch.heigvd.amt.user.api.model.UserNoPassword;
+import ch.heigvd.amt.user.api.util.JwtFilter;
 import ch.heigvd.amt.user.services.EmailService;
 import ch.heigvd.amt.user.services.JwtManager;
 import ch.heigvd.amt.user.entities.PasswordResetEntity;
@@ -10,9 +11,9 @@ import ch.heigvd.amt.user.entities.UserEntity;
 import ch.heigvd.amt.user.repositories.PasswordResetsRepository;
 import ch.heigvd.amt.user.repositories.UsersRepository;
 import org.springframework.http.ResponseEntity;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.*;
 import java.util.Optional;
 import java.util.Set;
@@ -26,14 +27,17 @@ public class UsersApiController implements UsersApi {
     private JwtManager jwtManager;
     private EmailService emailService;
     private Validator validator;
+    private HttpServletRequest request;
 
     public UsersApiController(UsersRepository usersRepository, PasswordResetsRepository passwordResetsRepository,
-                              JwtManager jwtManager, EmailService emailService, Validator validator) {
+                              JwtManager jwtManager, EmailService emailService, Validator validator,
+                              HttpServletRequest request) {
         this.usersRepository = usersRepository;
         this.passwordResetsRepository = passwordResetsRepository;
         this.jwtManager = jwtManager;
         this.emailService = emailService;
         this.validator = validator;
+        this.request = request;
     }
 
     @Override
@@ -57,12 +61,14 @@ public class UsersApiController implements UsersApi {
     @Override
     public ResponseEntity<UserNoPassword> getUser(String email) {
 
-        Optional<UserEntity> entity = usersRepository.findById(email);
-        if (!entity.isPresent()) {
-            return ResponseEntity.status(404).build();
+        String tokenEmail = (String) request.getAttribute(JwtFilter.EMAIL_REQUEST_ATTRIBUTE);
+        if (tokenEmail == null || !tokenEmail.equals(email)) {
+            return ResponseEntity.status(401).build();
         }
 
-        return ResponseEntity.status(200).body(entity.get().toUser());
+        return usersRepository.findById(email)
+                .map(userEntity -> ResponseEntity.status(200).body(userEntity.toUser()))
+                .orElseGet(() -> ResponseEntity.status(404).build());
     }
 
     @Override

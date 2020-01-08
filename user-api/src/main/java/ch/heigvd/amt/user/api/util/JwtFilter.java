@@ -32,7 +32,7 @@ public class JwtFilter implements Filter {
             String token = authHeader.substring(AUTH_PREFIX.length());
 
             DecodedJWT decodedJWT = jwtManager.decodeToken(token);
-            if (jwtManager.checkExpiration(decodedJWT)) {
+            if (decodedJWT != null && jwtManager.checkExpiration(decodedJWT)) {
 
                 String email = jwtManager.getUserEmail(decodedJWT);
                 if (email != null) {

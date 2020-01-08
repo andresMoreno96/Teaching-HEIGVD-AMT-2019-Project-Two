@@ -12,11 +12,11 @@ import static org.junit.Assert.assertEquals;
 /**
  * Created by Olivier Liechti on 27/07/17.
  */
-public class CreationSteps {
+public class CreateUserSteps {
 
     private Environment env;
 
-    public CreationSteps(Environment environment) {
+    public CreateUserSteps(Environment environment) {
         this.env = environment;
     }
 

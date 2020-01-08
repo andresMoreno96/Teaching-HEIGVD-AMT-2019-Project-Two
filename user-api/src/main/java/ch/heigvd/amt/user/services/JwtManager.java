@@ -3,6 +3,8 @@ package ch.heigvd.amt.user.services;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.JWTDecodeException;
+import com.auth0.jwt.exceptions.SignatureVerificationException;
 import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import org.springframework.beans.factory.annotation.Value;
@@ -41,17 +43,21 @@ public class JwtManager {
     }
 
     public DecodedJWT decodeToken(String token) {
-        return verifier.verify(token);
+        try {
+            return verifier.verify(token);
+        } catch (SignatureVerificationException e) {
+            return null;
+        }
     }
 
     public String getUserEmail(DecodedJWT decodedJWT) {
         Claim claim = decodedJWT.getClaim(USER_EMAIL);
-        return claim != null ? claim.asString() : null;
+        return !claim.isNull() ? claim.asString() : null;
     }
 
     public long getPasswordReset(DecodedJWT decodedJWT) {
         Claim claim = decodedJWT.getClaim(PWD_RESET);
-        return claim != null ? claim.asLong() : -1;
+        return !claim.isNull() ? claim.asLong() : -1;
     }
 
     public boolean checkExpiration(DecodedJWT decodedJWT) {

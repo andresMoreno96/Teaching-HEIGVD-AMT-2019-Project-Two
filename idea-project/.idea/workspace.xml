@@ -3,15 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="d625838d-3233-4fba-a41a-8eac3191c00c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-api/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../user-api/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-specs/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../user-specs/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-specs/src/test/java/ch/heigvd/amt/user/spec/steps/AuthenticationSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-specs/src/test/java/ch/heigvd/amt/user/spec/steps/AuthenticationSteps.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-specs/src/test/java/ch/heigvd/amt/user/spec/steps/PasswordResetRequestSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-specs/src/test/java/ch/heigvd/amt/user/spec/steps/PasswordResetRequestSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/api/endpoints/UsersApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/api/endpoints/UsersApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/api/exceptions/ExceptionHandlers.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/api/exceptions/ExceptionHandlers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/api/util/JwtFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/api/util/JwtFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/services/JwtManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/services/JwtManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-specs/src/test/java/ch/heigvd/amt/user/spec/helpers/JwtManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-specs/src/test/java/ch/heigvd/amt/user/spec/helpers/JwtManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-specs/src/test/java/ch/heigvd/amt/user/spec/steps/CreationSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-specs/src/test/java/ch/heigvd/amt/user/spec/steps/CreateUserSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-specs/src/test/java/ch/heigvd/amt/user/spec/steps/PasswordResetRequestSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-specs/src/test/java/ch/heigvd/amt/user/spec/steps/ResetPasswordSteps.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../user-specs/src/test/java/ch/heigvd/amt/user/spec/steps/UserSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-specs/src/test/java/ch/heigvd/amt/user/spec/steps/UserSteps.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-specs/src/test/resources/environment.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../user-specs/src/test/resources/environment.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-specs/src/test/resources/scenarios/authentication.feature" beforeDir="false" afterPath="$PROJECT_DIR$/../user-specs/src/test/resources/scenarios/authentication.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-specs/src/test/resources/scenarios/creation.feature" beforeDir="false" afterPath="$PROJECT_DIR$/../user-specs/src/test/resources/scenarios/creation.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-specs/src/test/resources/scenarios/passwordResetRequest.feature" beforeDir="false" afterPath="$PROJECT_DIR$/../user-specs/src/test/resources/scenarios/passwordResetRequest.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-specs/src/test/resources/scenarios/creation.feature" beforeDir="false" afterPath="$PROJECT_DIR$/../user-specs/src/test/resources/scenarios/createUser.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-specs/src/test/resources/scenarios/passwordResetRequest.feature" beforeDir="false" afterPath="$PROJECT_DIR$/../user-specs/src/test/resources/scenarios/resetPassword.feature" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +135,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1578306728739</updated>
-      <workItem from="1578306733786" duration="18241000" />
+      <workItem from="1578306733786" duration="30540000" />
     </task>
     <servers />
   </component>
@@ -150,10 +151,14 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="150" y="43" width="1184" height="775" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1578400123182" />
-    <state x="533" y="173" key="#com.intellij.ide.util.MemberChooser" timestamp="1578391938173">
+    <state x="444" y="260" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1578409951573">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="533" y="173" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1578391938173" />
+    <state x="444" y="260" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1578409951573" />
+    <state x="533" y="173" key="#com.intellij.ide.util.MemberChooser" timestamp="1578410997224">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="533" y="173" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1578410997224" />
     <state x="457" y="241" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1578307126479">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -166,49 +171,53 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="323" y="237" key="EnvironmentVariablesDialog/0.0.1440.900@0.0.1440.900" timestamp="1578316744769" />
-    <state width="1398" height="329" key="GridCell.Tab.0.bottom" timestamp="1578400708938">
+    <state width="1398" height="285" key="GridCell.Tab.0.bottom" timestamp="1578470534767">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="329" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1578400708938" />
-    <state width="1398" height="329" key="GridCell.Tab.0.center" timestamp="1578400708937">
+    <state width="1398" height="285" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1578470534767" />
+    <state width="1398" height="285" key="GridCell.Tab.0.center" timestamp="1578470534759">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="329" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1578400708937" />
-    <state width="1398" height="329" key="GridCell.Tab.0.left" timestamp="1578400708936">
+    <state width="1398" height="285" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1578470534759" />
+    <state width="1398" height="285" key="GridCell.Tab.0.left" timestamp="1578470534754">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="329" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1578400708936" />
-    <state width="1398" height="329" key="GridCell.Tab.0.right" timestamp="1578400708937">
+    <state width="1398" height="285" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1578470534754" />
+    <state width="1398" height="285" key="GridCell.Tab.0.right" timestamp="1578470534762">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="329" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1578400708937" />
-    <state width="1398" height="329" key="GridCell.Tab.1.bottom" timestamp="1578400708941">
+    <state width="1398" height="285" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1578470534762" />
+    <state width="1398" height="583" key="GridCell.Tab.1.bottom" timestamp="1578414427835">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="329" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1578400708941" />
-    <state width="1398" height="329" key="GridCell.Tab.1.center" timestamp="1578400708940">
+    <state width="1398" height="583" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1578414427835" />
+    <state width="1398" height="583" key="GridCell.Tab.1.center" timestamp="1578414427833">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="329" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1578400708940" />
-    <state width="1398" height="329" key="GridCell.Tab.1.left" timestamp="1578400708939">
+    <state width="1398" height="583" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1578414427833" />
+    <state width="1398" height="583" key="GridCell.Tab.1.left" timestamp="1578414427833">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="329" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1578400708939" />
-    <state width="1398" height="329" key="GridCell.Tab.1.right" timestamp="1578400708940">
+    <state width="1398" height="583" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1578414427833" />
+    <state width="1398" height="583" key="GridCell.Tab.1.right" timestamp="1578414427834">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="329" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1578400708940" />
+    <state width="1398" height="583" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1578414427834" />
     <state x="370" y="150" key="NewModule_or_Project.wizard" timestamp="1578306823595">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="370" y="150" key="NewModule_or_Project.wizard/0.0.1440.900@0.0.1440.900" timestamp="1578306823595" />
-    <state x="208" y="31" width="1134" height="837" key="SettingsEditor" timestamp="1578307381439">
+    <state x="208" y="31" width="1134" height="837" key="SettingsEditor" timestamp="1578406366344">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="208" y="31" width="1134" height="837" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1578307381439" />
-    <state x="400" y="207" width="933" height="486" key="find.popup" timestamp="1578401986310">
+    <state x="208" y="31" width="1134" height="837" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1578406366344" />
+    <state x="400" y="207" width="933" height="486" key="find.popup" timestamp="1578413186325">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="400" y="207" width="933" height="486" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1578401986310" />
+    <state x="400" y="207" width="933" height="486" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1578413186325" />
+    <state x="479" y="378" key="org.jetbrains.plugins.cucumber.inspections.ui.CreateStepDefinitionFileDialog" timestamp="1578410974145">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="479" y="378" key="org.jetbrains.plugins.cucumber.inspections.ui.CreateStepDefinitionFileDialog/0.0.1440.900@0.0.1440.900" timestamp="1578410974145" />
   </component>
 </project>
