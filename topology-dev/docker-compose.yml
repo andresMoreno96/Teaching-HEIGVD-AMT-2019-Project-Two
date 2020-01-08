@@ -1,28 +1,5 @@
 version: "3"
 services:
-  user-api:
-    build: ../user-api
-    container_name: user-api
-    environment:
-      DB_MODE: update
-      DB_HOST: user-api-db
-      DB_PORT: '3306'
-      DB_USER: root
-      DB_PASSWORD: $MYSQL_ROOT_PASSWORD
-      MAIL_SMTP_AUTH: 'true'
-      MAIL_HOST: smtp.mailtrap.io
-      MAIL_PORT: '2525'
-      MAIL_USERNAME: d0f6e1cbdaca39
-      MAIL_PASSWORD: 6f74d69269ad10
-      JWT_SECRET: potato
-    ports:
-      - 8080:8080
-    links:
-      - user-api-db
-    depends_on:
-      - user-api-db
-    command: ["./wait-for-it.sh", "user-api-db:3306", "-t", "0", "--", "java", "-jar", "./target/user-1.0.0.jar"]
-
   user-api-db:
     container_name: user-api-db
     image: mysql:5.7
