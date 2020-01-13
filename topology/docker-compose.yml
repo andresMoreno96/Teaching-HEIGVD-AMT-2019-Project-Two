@@ -24,7 +24,6 @@ services:
     command: ["./wait-for-it.sh", "user-api-db:3306", "-t", "0", "--", "java", "-jar", "./target/user-1.0.0.jar"]
 
   user-api-db:
-    container_name: user-api-db
     image: mysql:5.7
     command: --default-authentication-plugin=mysql_native_password
     restart: always
@@ -36,7 +35,6 @@ services:
       - ./volumes/user-api-data:/var/lib/mysql
 
   adventurer-api-db:
-    container_name: adventurer-api-db
     image: mysql:5.7
     command: --default-authentication-plugin=mysql_native_password
     restart: always
