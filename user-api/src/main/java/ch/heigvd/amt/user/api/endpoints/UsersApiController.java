@@ -10,6 +10,7 @@ import ch.heigvd.amt.user.entities.PasswordResetEntity;
 import ch.heigvd.amt.user.entities.UserEntity;
 import ch.heigvd.amt.user.repositories.PasswordResetsRepository;
 import ch.heigvd.amt.user.repositories.UsersRepository;
+import ch.heigvd.amt.user.services.PasswordService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 
@@ -24,16 +25,18 @@ public class UsersApiController implements UsersApi {
 
     private UsersRepository usersRepository;
     private PasswordResetsRepository passwordResetsRepository;
+    private PasswordService passwordService;
     private JwtManager jwtManager;
     private EmailService emailService;
     private Validator validator;
     private HttpServletRequest request;
 
     public UsersApiController(UsersRepository usersRepository, PasswordResetsRepository passwordResetsRepository,
-                              JwtManager jwtManager, EmailService emailService, Validator validator,
-                              HttpServletRequest request) {
+                              PasswordService passwordService, JwtManager jwtManager, EmailService emailService,
+                              Validator validator, HttpServletRequest request) {
         this.usersRepository = usersRepository;
         this.passwordResetsRepository = passwordResetsRepository;
+        this.passwordService = passwordService;
         this.jwtManager = jwtManager;
         this.emailService = emailService;
         this.validator = validator;
@@ -49,6 +52,9 @@ public class UsersApiController implements UsersApi {
         if (!violations.isEmpty()) {
             throw new ConstraintViolationException(violations);
         }
+
+        // hash user password;
+        entity.setPassword(passwordService.hashPassword(entity.getPassword()));
 
         if (!usersRepository.existsById(entity.getEmail())) {
             usersRepository.save(entity);
