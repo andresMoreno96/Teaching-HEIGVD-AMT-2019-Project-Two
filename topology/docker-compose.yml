@@ -10,11 +10,11 @@ services:
       DB_USER: root
       DB_PASSWORD: $MYSQL_ROOT_PASSWORD
       MAIL_SMTP_AUTH: 'true'
-      MAIL_HOST: smtp.mailtrap.io
-      MAIL_PORT: '2525'
-      MAIL_USERNAME: d0f6e1cbdaca39
-      MAIL_PASSWORD: 6f74d69269ad10
-      JWT_SECRET: potato
+      MAIL_HOST: $MAIL_HOST
+      MAIL_PORT: $MAIL_PORT
+      MAIL_USERNAME: $MAIL_USERNAME
+      MAIL_PASSWORD: $MAIL_PASSWORD
+      JWT_SECRET: $JWT_SECRET
     ports:
       - 8080:8080
     links:

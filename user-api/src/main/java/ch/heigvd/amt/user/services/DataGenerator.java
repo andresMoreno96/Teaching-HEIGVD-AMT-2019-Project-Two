@@ -54,6 +54,7 @@ public class DataGenerator implements ApplicationRunner {
 
             if (!users.isEmpty()) {
                 usersRepository.saveAll(users);
+                LOG.info(String.format("Saved %d users.", generateCount));
             }
 
             LOG.info("Data generation done!");
