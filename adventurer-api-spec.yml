@@ -21,7 +21,6 @@ paths:
       parameters:
         - $ref: '#/parameters/Limit'
         - $ref: '#/parameters/Offset'
-        - $ref: '#/parameters/SortBy'
       responses:
         200:
           description: adventurers
@@ -39,7 +38,7 @@ paths:
           in: body
           required: true
           schema:
-            $ref: '#/definitions/AdventurerCreate'
+            $ref: '#/definitions/Adventurer'
       security:
         - Bearer: []
       responses:
@@ -49,7 +48,7 @@ paths:
             $ref: '#/definitions/Adventurer'
         400:
           description: adventurer creation failed
-        403:
+        401:
           description: unauthorized access
   /adventurers/{name}:
     get:
@@ -85,7 +84,7 @@ paths:
           description: adventurer updated
           schema:
             $ref: '#/definitions/Adventurer'
-        403:
+        401:
           description: unauthorized access
         404:
           description: adventurer not found
@@ -101,7 +100,7 @@ paths:
       responses:
         200:
           description: adventurer deleted
-        403:
+        401:
           description: unauthorized access
         404:
           description: adventurer not found
@@ -141,7 +140,7 @@ paths:
             $ref: '#/definitions/Adventurer'
         400:
           description: quest creation failed
-        403:
+        401:
           description: unauthorized access
   /quests/{id}:
     get:
@@ -177,7 +176,7 @@ paths:
           description: quest updated
           schema:
             $ref: '#/definitions/Quest'
-        403:
+        401:
           description: unauthorized access
         404:
           description: quest not found
@@ -195,7 +194,7 @@ paths:
           description: deletion success
         400:
           description: deletion failed
-        403:
+        401:
           description: unauthorized access
         404:
           description: quest not found
@@ -222,7 +221,7 @@ paths:
           description: quest ended
           schema:
             $ref: '#/definitions/Quest'
-        403:
+        401:
           description: unauthorized access
         404:
           description: quest not found
@@ -233,12 +232,12 @@ paths:
       tags:
         - Participations
       parameters:
-        - name: adventurer
+        - name: adventurerName
           description: Adventurer joining a quest.
           in: formData
           type: string
           required: true
-        - name: quest
+        - name: questId
           description: Quest to join.
           in: formData
           type: integer
@@ -248,7 +247,7 @@ paths:
       responses:
         200:
           description: quest joined
-        403:
+        401:
           description: unauthorized access
         404:
           description: adventurer or quest not found
@@ -279,7 +278,7 @@ paths:
       responses:
         200:
           description: quest quitted
-        403:
+        401:
           description: unauthorized access
         404:
           description: adventurer or quest not found
@@ -305,11 +304,6 @@ parameters:
     in: query
     type: string
     description: The number of elements to omit
-  SortBy:
-    name: sortby
-    in: query
-    type: string
-    description: The name of the data to sort by.
   Populate:
     name: populate
     in: query
@@ -335,15 +329,6 @@ definitions:
         type: string
       job:
         type: string
-      rank:
-        type: string
-  AdventurerCreate:
-    type: object
-    properties:
-      name:
-        type: string
-      job:
-        type: string
   AdventurerUpdate:
     type: object
     properties:
@@ -359,9 +344,7 @@ definitions:
         type: string
       description:
         type: string
-      rank:
-        type: string
-      owner:
+      adventurerName:
         type: string
       ended:
         type: boolean
@@ -372,9 +355,7 @@ definitions:
         type: string
       description:
         type: string
-      rank:
-        type: string
-      owner:
+      adventurerName:
         type: string
   QuestUpdate:
     type: object
@@ -382,8 +363,6 @@ definitions:
       title:
         type: string
       description:
-        type: string
-      rank:
         type: string
   Participation:
     type: object
