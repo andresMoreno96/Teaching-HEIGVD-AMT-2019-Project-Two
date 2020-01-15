@@ -1,9 +1,24 @@
 version: "3"
 services:
+  traefik:
+    container_name: user-adventurer-reverse-proxy
+    image: traefik:2.1
+    command:
+      - --api.insecure=true
+      - --providers.docker=true
+      - --providers.docker.exposedbydefault=false
+      - --entrypoints.web.address=:80
+    ports:
+      - 80:80
+      - 8080:8080
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+
   user-api:
     build: ../user-api
     container_name: user-api
     environment:
+      CONTEXT_PATH: /auth
       DB_MODE: update
       DB_HOST: user-api-db
       DB_PORT: '3306'
@@ -15,8 +30,12 @@ services:
       MAIL_USERNAME: $MAIL_USERNAME
       MAIL_PASSWORD: $MAIL_PASSWORD
       JWT_SECRET: $JWT_SECRET
-    ports:
-      - 8080:8080
+    labels:
+      - traefik.enable=true
+      # setup routers
+      - traefik.http.routers.user-api-router.entrypoints=web
+      - traefik.http.routers.user-api-router.rule=Host(`localhost`) && PathPrefix(`/auth`)
+      - traefik.http.services.user-api-service.loadbalancer.server.port=8080
     links:
       - user-api-db
     depends_on:
@@ -24,34 +43,21 @@ services:
     command: ["./wait-for-it.sh", "user-api-db:3306", "-t", "0", "--", "java", "-jar", "./target/user-1.0.0.jar"]
 
   user-api-db:
+    container_name: user-api-db
     image: mysql:5.7
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
-    ports:
-      - 3306:3306
     volumes:
-      - ./volumes/user-api-data:/var/lib/mysql
+      - ./data-user-api:/var/lib/mysql
 
   adventurer-api-db:
+    container_name: adventurer-api-db
     image: mysql:5.7
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
-    ports:
-      - 3307:3306
     volumes:
-      - ./volumes/adventurer-api-data:/var/lib/mysql
-
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    environment:
-     - PMA_HOSTS=user-api-db,adventurer-api-db
-    restart: always
-    depends_on:
-     - user-api-db
-     - adventurer-api-db
-    ports:
-     - 8888:80
+      - ./data-adventurer-api:/var/lib/mysql

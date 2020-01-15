@@ -3,12 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="d625838d-3233-4fba-a41a-8eac3191c00c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../topology-dev/.env" beforeDir="false" afterPath="$PROJECT_DIR$/../topology-dev/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../topology-dev/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../topology-dev/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../topology-dev/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../topology-dev/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../topology/.env" beforeDir="false" afterPath="$PROJECT_DIR$/../topology/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../topology/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../topology/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/services/DataGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/services/DataGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/configuration/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/configuration/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-api/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../user-api/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +130,7 @@
       <option name="presentableId" value="Default" />
       <updated>1578306728739</updated>
       <workItem from="1578306733786" duration="32951000" />
-      <workItem from="1578916306040" duration="9767000" />
+      <workItem from="1578916306040" duration="13168000" />
     </task>
     <servers />
   </component>
