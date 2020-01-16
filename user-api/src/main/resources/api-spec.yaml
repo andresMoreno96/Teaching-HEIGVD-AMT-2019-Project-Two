@@ -3,8 +3,6 @@ info:
   description: simple user managment API
   version: 1.0.0
   title: AMT User API
-host: localhost:8080
-basePath: /api
 schemes:
   - http
 paths:
@@ -14,7 +12,7 @@ paths:
       description: create new user
       consumes:
         - application/json
-      produces:
+      produces: 
         - application/json
       parameters:
         - name: user
@@ -32,7 +30,7 @@ paths:
     get:
       operationId: getUser
       description: get user information
-      produces:
+      produces: 
         - application/json
       parameters:
         - $ref: '#/parameters/email'

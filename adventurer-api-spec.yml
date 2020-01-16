@@ -3,21 +3,13 @@ info:
   description: "A simple adventurer API"
   version: "1.0.0"
   title: "AMT Adventurer API"
-basePath: "/"
 schemes:
-  - "https"
   - "http"
-tags:
-  - name: Adventurers
-  - name: Quests
-  - name: Participations
 paths:
   /adventurers:
     get:
       operationId: getAdventurers
       summary: Get adventurers informations
-      tags:
-        - Adventurers
       parameters:
         - $ref: '#/parameters/Limit'
         - $ref: '#/parameters/Offset'
@@ -31,8 +23,6 @@ paths:
     post:
       operationId: createAdventurer
       summary: Create a new adventurer
-      tags:
-        - Adventurers
       parameters:
         - name: adventurer
           in: body
@@ -54,8 +44,6 @@ paths:
     get:
       operationId: getAdventurer
       summary: Get an adventurer informations
-      tags:
-        - Adventurers
       parameters:
         - $ref: '#/parameters/Name'
       responses:
@@ -68,8 +56,6 @@ paths:
     put:
       operationId: updateAdventurer
       summary: Update adventurer informations
-      tags:
-        - Adventurers
       parameters:
         - $ref: '#/parameters/Name'
         - name: informations
@@ -91,8 +77,6 @@ paths:
     delete:
       operationId: deleteAdventurer
       summary: Deletes an adventurer
-      tags:
-        - Adventurers
       parameters:
         - $ref: '#/parameters/Name'
       security:
@@ -108,8 +92,6 @@ paths:
     get:
       operationId: getQuests
       summary: Get quests informations
-      tags:
-        - Quests
       parameters:
         - $ref: '#/parameters/Limit'
         - $ref: '#/parameters/Offset'
@@ -123,8 +105,6 @@ paths:
     post:
       operationId: createQuest
       summary: Create a new quest
-      tags:
-        - Quests
       parameters:
         - name: quest
           in: body
@@ -146,8 +126,6 @@ paths:
     get:
       operationId: getQuest
       summary: Get a quest informations
-      tags:
-        - Quests
       parameters:
         - $ref: '#/parameters/QuestID'
       responses:
@@ -160,8 +138,6 @@ paths:
     put:
       operationId: updateQuest
       summary: Update a quest informations
-      tags:
-        - Quests
       parameters:
         - $ref: '#/parameters/QuestID'
         - name: informations
@@ -183,8 +159,6 @@ paths:
     delete:
       operationId: deleteQuest
       summary: Deletes a quest
-      tags:
-        - Quests
       parameters:
         - $ref: '#/parameters/QuestID'
       security:
@@ -210,8 +184,6 @@ paths:
     post:
       operationId: endQuest
       summary: Ends a quest and checks participants' ranks.
-      tags:
-        - Quests
       parameters:
         - $ref: '#/parameters/QuestID'
       security:
@@ -225,12 +197,10 @@ paths:
           description: unauthorized access
         404:
           description: quest not found
-  /participations:
+  /participation:
     post:
       operationId: joinQuest
       summary: An adventurer joins a quest
-      tags:
-        - Participations
       parameters:
         - name: adventurerName
           description: Adventurer joining a quest.
@@ -260,8 +230,6 @@ paths:
     delete:
       operationId: quitQuest
       summary: An adventurer quits a quest
-      tags:
-        - Participations
       parameters:
         - name: adventurer
           description: Adventurer joining a quest.

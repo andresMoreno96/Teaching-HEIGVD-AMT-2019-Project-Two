@@ -1,35 +1,341 @@
-version: "3"
-services:
-  user-api-db:
-    build: ./user-api-mysql
-    command: --default-authentication-plugin=mysql_native_password
-    restart: always
-    environment:
-      LOAD_DATA: $LOAD_DATA
-      MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
-    ports:
-      - 3306:3306
-    volumes:
-      - ./data-user-api:/var/lib/mysql
-
-  adventurer-api-db:
-    image: mysql:5.7
-    command: --default-authentication-plugin=mysql_native_password
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
-    ports:
-      - 3307:3306
-    volumes:
-      - ./data-adventurer-api:/var/lib/mysql
-
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    environment:
-     - PMA_HOSTS=user-api-db,adventurer-api-db
-    restart: always
-    depends_on:
-     - user-api-db
-     - adventurer-api-db
-    ports:
-     - 8888:80
+swagger: "2.0"
+info:
+  description: "A simple adventurer API"
+  version: "1.0.0"
+  title: "AMT Adventurer API"
+schemes:
+  - "http"
+paths:
+  /adventurers:
+    get:
+      operationId: getAdventurers
+      summary: Get adventurers informations
+      parameters:
+        - $ref: '#/parameters/Limit'
+        - $ref: '#/parameters/Offset'
+      responses:
+        200:
+          description: adventurers
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Adventurer'
+    post:
+      operationId: createAdventurer
+      summary: Create a new adventurer
+      parameters:
+        - name: adventurer
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Adventurer'
+      security:
+        - Bearer: []
+      responses:
+        200:
+          description: adventurer creation success
+          schema:
+            $ref: '#/definitions/Adventurer'
+        400:
+          description: adventurer creation failed
+        401:
+          description: unauthorized access
+  /adventurers/{name}:
+    get:
+      operationId: getAdventurer
+      summary: Get an adventurer informations
+      parameters:
+        - $ref: '#/parameters/Name'
+      responses:
+        200:
+          description: adventurer informations
+          schema:
+            $ref: '#/definitions/Adventurer'
+        404:
+          description: adventurer not found
+    put:
+      operationId: updateAdventurer
+      summary: Update adventurer informations
+      parameters:
+        - $ref: '#/parameters/Name'
+        - name: informations
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/AdventurerUpdate'
+      security:
+        - Bearer: []
+      responses:
+        200:
+          description: adventurer updated
+          schema:
+            $ref: '#/definitions/Adventurer'
+        401:
+          description: unauthorized access
+        404:
+          description: adventurer not found
+    delete:
+      operationId: deleteAdventurer
+      summary: Deletes an adventurer
+      parameters:
+        - $ref: '#/parameters/Name'
+      security:
+        - Bearer: []
+      responses:
+        200:
+          description: adventurer deleted
+        401:
+          description: unauthorized access
+        404:
+          description: adventurer not found
+  /quests:
+    get:
+      operationId: getQuests
+      summary: Get quests informations
+      parameters:
+        - $ref: '#/parameters/Limit'
+        - $ref: '#/parameters/Offset'
+      responses:
+        200:
+          description: quests
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Quest"
+    post:
+      operationId: createQuest
+      summary: Create a new quest
+      parameters:
+        - name: quest
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/QuestCreate'
+      security:
+        - Bearer: []
+      responses:
+        200:
+          description: quest creation success
+          schema:
+            $ref: '#/definitions/Adventurer'
+        400:
+          description: quest creation failed
+        401:
+          description: unauthorized access
+  /quests/{id}:
+    get:
+      operationId: getQuest
+      summary: Get a quest informations
+      parameters:
+        - $ref: '#/parameters/QuestID'
+      responses:
+        200:
+          description: quest found
+          schema:
+            $ref: '#/definitions/Quest'
+        404:
+          description: quest not found
+    put:
+      operationId: updateQuest
+      summary: Update a quest informations
+      parameters:
+        - $ref: '#/parameters/QuestID'
+        - name: informations
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/QuestUpdate'
+      security:
+        - Bearer: []
+      responses:
+        200:
+          description: quest updated
+          schema:
+            $ref: '#/definitions/Quest'
+        401:
+          description: unauthorized access
+        404:
+          description: quest not found
+    delete:
+      operationId: deleteQuest
+      summary: Deletes a quest
+      parameters:
+        - $ref: '#/parameters/QuestID'
+      security:
+        - Bearer: []
+      responses:
+        200:
+          description: deletion success
+        400:
+          description: deletion failed
+        401:
+          description: unauthorized access
+        404:
+          description: quest not found
+        405:
+          description: cannot delete an ended quest
+          headers:
+            Allow:
+              type: string
+              description: Allowed methods
+        409:
+          description: cannot delete a quest with participants
+  /quests/{id}/end:
+    post:
+      operationId: endQuest
+      summary: Ends a quest and checks participants' ranks.
+      parameters:
+        - $ref: '#/parameters/QuestID'
+      security:
+        - Bearer: []
+      responses:
+        200:
+          description: quest ended
+          schema:
+            $ref: '#/definitions/Quest'
+        401:
+          description: unauthorized access
+        404:
+          description: quest not found
+  /participation:
+    post:
+      operationId: joinQuest
+      summary: An adventurer joins a quest
+      parameters:
+        - name: adventurerName
+          description: Adventurer joining a quest.
+          in: formData
+          type: string
+          required: true
+        - name: questId
+          description: Quest to join.
+          in: formData
+          type: integer
+          required: true
+      security:
+        - Bearer: []
+      responses:
+        200:
+          description: quest joined
+        401:
+          description: unauthorized access
+        404:
+          description: adventurer or quest not found
+        405:
+          description: cannot join an ended quest
+          headers:
+            Allow:
+              type: string
+              description: Allowed methods
+    delete:
+      operationId: quitQuest
+      summary: An adventurer quits a quest
+      parameters:
+        - name: adventurer
+          description: Adventurer joining a quest.
+          in: formData
+          type: string
+          required: true
+        - name: quest
+          description: Quest to join.
+          in: formData
+          type: integer
+          required: true
+      security:
+        - Bearer: []
+      responses:
+        200:
+          description: quest quitted
+        401:
+          description: unauthorized access
+        404:
+          description: adventurer or quest not found
+        405:
+          description: cannot quit an ended quest
+          headers:
+            Allow:
+              type: string
+              description: Allowed methods
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+parameters:
+  Limit:
+    name: limit
+    in: query
+    type: string
+    description: The quantity of elements to retrieve
+  Offset:
+    name: offset
+    in: query
+    type: string
+    description: The number of elements to omit
+  Populate:
+    name: populate
+    in: query
+    type: string
+    description: The name of the data to populate.
+  Name:
+    name: name
+    in: path
+    type: string
+    required: true
+    description: The name of an adventurer.
+  QuestID:
+    name: id
+    in: path
+    type: integer
+    required: true
+    description: The id of a quest.
+definitions:
+  Adventurer:
+    type: object
+    properties:
+      name:
+        type: string
+      job:
+        type: string
+  AdventurerUpdate:
+    type: object
+    properties:
+      job:
+        type: string
+  Quest:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      title:
+        type: string
+      description:
+        type: string
+      adventurerName:
+        type: string
+      ended:
+        type: boolean
+  QuestCreate:
+    type: object
+    properties:
+      title:
+        type: string
+      description:
+        type: string
+      adventurerName:
+        type: string
+  QuestUpdate:
+    type: object
+    properties:
+      title:
+        type: string
+      description:
+        type: string
+  Participation:
+    type: object
+    properties: 
+      adventurer:
+        type: string
+      quest:
+        type: integer

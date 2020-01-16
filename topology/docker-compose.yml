@@ -34,13 +34,36 @@ services:
       - traefik.enable=true
       # setup routers
       - traefik.http.routers.user-api-router.entrypoints=web
-      - traefik.http.routers.user-api-router.rule=Host(`localhost`) && PathPrefix(`/auth`)
+      - traefik.http.routers.user-api-router.rule=Host(`$SERVER_HOST`) && PathPrefix(`/auth`)
       - traefik.http.services.user-api-service.loadbalancer.server.port=8080
     links:
       - user-api-db
     depends_on:
       - user-api-db
     command: ["./wait-for-it.sh", "user-api-db:3306", "-t", "0", "--", "java", "-jar", "./target/user-1.0.0.jar"]
+
+  adventurer-api:
+    build: ../adventurer-api
+    container_name: adventurer-api
+    environment:
+      CONTEXT_PATH: /
+      DB_MODE: update
+      DB_HOST: adventurer-api-db
+      DB_PORT: '3306'
+      DB_USER: root
+      DB_PASSWORD: $MYSQL_ROOT_PASSWORD
+      JWT_SECRET: $JWT_SECRET
+    labels:
+      - traefik.enable=true
+      # setup routers
+      - traefik.http.routers.adventurer-api-router.entrypoints=web
+      - traefik.http.routers.adventurer-api-router.rule=Host(`$SERVER_HOST`)
+      - traefik.http.services.adventurer-api-service.loadbalancer.server.port=8080
+    links:
+      - adventurer-api-db
+    depends_on:
+      - adventurer-api-db
+    command: ["./wait-for-it.sh", "adventurer-api-db:3306", "-t", "0", "--", "java", "-jar", "./target/adventurer-1.0.0.jar"]
 
   user-api-db:
     container_name: user-api-db
