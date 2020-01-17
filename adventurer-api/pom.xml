@@ -122,5 +122,10 @@
         <version>2.0.1.Final</version>
         <scope>provided</scope>
     </dependency>
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>3.8.0</version>
+        </dependency>
     </dependencies>
 </project>

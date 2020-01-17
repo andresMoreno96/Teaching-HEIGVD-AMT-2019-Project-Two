@@ -1,9 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>ch.heigvd.amt</groupId>
-    <artifactId>user</artifactId>
+    <artifactId>userEmail</artifactId>
     <packaging>jar</packaging>
-    <name>amt-user-api</name>
+    <name>amt-userEmail-api</name>
     <version>1.0.0</version>
     <properties>
         <java.version>1.8</java.version>
@@ -49,10 +49,10 @@
                                 <useBeanValidation>true</useBeanValidation>
                                 <interfaceOnly>true</interfaceOnly>
                                 <delegatePattern>false</delegatePattern>
-                                <apiPackage>ch.heigvd.amt.user.api</apiPackage>
-                                <configPackage>ch.heigvd.amt.user.config</configPackage>
-                                <basePackage>ch.heigvd.amt.user</basePackage>
-                                <modelPackage>ch.heigvd.amt.user.api.model</modelPackage>
+                                <apiPackage>ch.heigvd.amt.userEmail.api</apiPackage>
+                                <configPackage>ch.heigvd.amt.userEmail.config</configPackage>
+                                <basePackage>ch.heigvd.amt.userEmail</basePackage>
+                                <modelPackage>ch.heigvd.amt.userEmail.api.model</modelPackage>
                             </configOptions>
                         </configuration>
                     </execution>

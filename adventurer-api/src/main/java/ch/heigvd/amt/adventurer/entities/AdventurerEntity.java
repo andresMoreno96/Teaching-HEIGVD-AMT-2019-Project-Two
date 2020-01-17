@@ -1,13 +1,11 @@
 package ch.heigvd.amt.adventurer.entities;
 
-import org.hibernate.annotations.ColumnDefault;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
 
-@Entity(name = "Adventurer")
-@Table(name = "adventurers", schema = "adventurer_api")
+@Entity
+@Table(schema = "adventurer_api")
 public class AdventurerEntity implements Serializable {
 
     @Id
@@ -15,20 +13,10 @@ public class AdventurerEntity implements Serializable {
 
     private String job;
 
-    @Enumerated(EnumType.ORDINAL)
     @Column(nullable = false)
-    @ColumnDefault("0")
-    private AdventurerRank rank;
-
-    @Column(nullable = false)
-    private String user;
+    private String userEmail;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "participation",
-            joinColumns = @JoinColumn(name = "adventurer"),
-            inverseJoinColumns = @JoinColumn(name = "quest")
-    )
     private Set<QuestEntity> participation;
 
     public String getName() {
@@ -39,12 +27,8 @@ public class AdventurerEntity implements Serializable {
         return job;
     }
 
-    public AdventurerRank getRank() {
-        return rank;
-    }
-
-    public String getUser() {
-        return user;
+    public String getUserEmail() {
+        return userEmail;
     }
 
     public void setName(String name) {
@@ -55,11 +39,7 @@ public class AdventurerEntity implements Serializable {
         this.job = job;
     }
 
-    public void setRank(AdventurerRank rank) {
-        this.rank = rank;
-    }
-
-    public void setUser(String user) {
-        this.user = user;
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 }

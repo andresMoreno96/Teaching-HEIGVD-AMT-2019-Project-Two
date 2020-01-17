@@ -6,8 +6,8 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
 
-@Entity(name = "Quest")
-@Table(name = "quests", schema = "adventurer_api")
+@Entity
+@Table(schema = "adventurer_api")
 public class QuestEntity implements Serializable {
 
     @Id
@@ -19,16 +19,11 @@ public class QuestEntity implements Serializable {
 
     private String description;
 
-    @Enumerated(EnumType.ORDINAL)
-    @Column(nullable = false)
-    @ColumnDefault("0")
-    private AdventurerRank rank;
-
     @ColumnDefault("false")
     private boolean ended;
 
     @OneToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "owner", nullable = false)
+    @JoinColumn(nullable = false)
     private AdventurerEntity owner;
 
     @ManyToMany(mappedBy = "participation", fetch = FetchType.LAZY)

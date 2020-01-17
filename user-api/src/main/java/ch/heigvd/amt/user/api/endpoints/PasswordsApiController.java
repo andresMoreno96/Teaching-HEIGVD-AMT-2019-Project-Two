@@ -1,11 +1,12 @@
 package ch.heigvd.amt.user.api.endpoints;
 
-import ch.heigvd.amt.user.api.PasswordsApi;
+
 import ch.heigvd.amt.user.api.util.JwtFilter;
 import ch.heigvd.amt.user.entities.PasswordResetEntity;
 import ch.heigvd.amt.user.repositories.PasswordResetsRepository;
 import ch.heigvd.amt.user.repositories.UsersRepository;
 import ch.heigvd.amt.user.services.PasswordService;
+import ch.heigvd.amt.userEmail.api.PasswordsApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
