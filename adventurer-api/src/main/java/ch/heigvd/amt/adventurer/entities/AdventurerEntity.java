@@ -21,6 +21,8 @@ public class AdventurerEntity implements Serializable {
     @ManyToMany(fetch = FetchType.LAZY)
     private Set<QuestEntity> participation;
 
+    public  AdventurerEntity(){}
+
     public AdventurerEntity(Adventurer adventurer, String userEmail) {
 
         this.name=adventurer.getName();
@@ -28,6 +30,10 @@ public class AdventurerEntity implements Serializable {
         this.userEmail=userEmail;
 
 
+    }
+
+    public Adventurer toAdventurer() {
+        return new Adventurer().name(name).job(job).userEmail(userEmail);
     }
 
     public String getName() {
