@@ -7,18 +7,13 @@ import ch.heigvd.amt.adventurer.api.util.JwtFilterAdv;
 import ch.heigvd.amt.adventurer.entities.AdventurerEntity;
 import ch.heigvd.amt.adventurer.repositories.AdventurerRepository;
 import ch.heigvd.amt.adventurer.repositories.QuestRepository;
-import ch.heigvd.amt.adventurer.services.JwtManagerAdv;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
-import org.springframework.web.context.request.NativeWebRequest;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.swing.text.html.parser.Entity;
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class AdventurersApiController implements AdventurersApi {
@@ -26,9 +21,6 @@ public class AdventurersApiController implements AdventurersApi {
 
     @Autowired
     private AdventurerRepository adventurerRepository;
-
-    @Autowired
-    private JwtManagerAdv jwtManager;
 
     @Autowired
     private QuestRepository questRepository;
@@ -57,22 +49,39 @@ public class AdventurersApiController implements AdventurersApi {
     @Override
     public ResponseEntity<Void> deleteAdventurer(String name) {
 
+        if (!adventurerRepository.existsById(name)) {
 
+            return ResponseEntity.status(400).build();
+        }
 
-        return null;
+        String tokenEmail = (String) request.getAttribute(JwtFilterAdv.EMAIL_REQUEST_ATTRIBUTE);
+        if (tokenEmail == null || !tokenEmail.equals(adventurerRepository.findById(name).get().getUserEmail())) {
+
+            return ResponseEntity.status(401).build();
+        }
+
+        adventurerRepository.deleteById(name);
+
+        return ResponseEntity.status(200).build();
+
     }
 
     @Override
     public ResponseEntity<Adventurer> getAdventurer(String name) {
 
+        if (!adventurerRepository.existsById(name)) {
+
+            return ResponseEntity.status(400).build();
+        }
+
         String tokenEmail = (String) request.getAttribute(JwtFilterAdv.EMAIL_REQUEST_ATTRIBUTE);
-        if (tokenEmail == null || !tokenEmail.equals(adventurerRepository.findById(name).get().getUserEmail())){
+        if (tokenEmail == null || !tokenEmail.equals(adventurerRepository.findById(name).get().getUserEmail())) {
 
             return ResponseEntity.status(401).build();
         }
 
-        return adventurerRepository.findById(name).map(adventurerEntity ->ResponseEntity.status(200).body(adventurerEntity.toAdventurer()))
-                .orElseGet(()-> ResponseEntity.status(404).build());
+        return adventurerRepository.findById(name).map(adventurerEntity -> ResponseEntity.status(200).body(adventurerEntity.toAdventurer()))
+                .orElseGet(() -> ResponseEntity.status(404).build());
     }
 
     @Override
