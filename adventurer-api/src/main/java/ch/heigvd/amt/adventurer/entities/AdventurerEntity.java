@@ -33,7 +33,7 @@ public class AdventurerEntity implements Serializable {
     }
 
     public Adventurer toAdventurer() {
-        return new Adventurer().name(name).job(job).userEmail(userEmail);
+        return new Adventurer().name(name).job(job);
     }
 
     public String getName() {
