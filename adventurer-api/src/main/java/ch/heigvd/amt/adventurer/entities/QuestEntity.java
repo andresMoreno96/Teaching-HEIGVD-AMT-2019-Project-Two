@@ -1,5 +1,7 @@
 package ch.heigvd.amt.adventurer.entities;
 
+import ch.heigvd.amt.adventurer.api.model.Quest;
+import ch.heigvd.amt.adventurer.api.model.QuestCreate;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
@@ -26,6 +28,32 @@ public class QuestEntity implements Serializable {
     @JoinColumn(nullable = false)
     private AdventurerEntity owner;
 
+
+
     @ManyToMany(mappedBy = "participation", fetch = FetchType.LAZY)
     private Set<AdventurerEntity> participants;
+
+    public QuestEntity(QuestCreate questCreate, AdventurerEntity adventurerEntity){
+
+        this.title=questCreate.getTitle();
+        this.description=questCreate.getDescription();
+        this.owner=adventurerEntity;
+
+
+    }
+
+    public QuestEntity(Quest quest, AdventurerEntity adventurerEntity) {
+        this.id = quest.getId();
+        this.description = quest.getDescription();
+        this.ended = quest.getEnded();
+        this.title = quest.getTitle();
+        this.owner = adventurerEntity;
+
+
+    }
+
+    public Quest toQuest() {
+        return new Quest().id(id).description(description)
+                .ended(ended).title(title).adventurerName(owner.getName());
+    }
 }

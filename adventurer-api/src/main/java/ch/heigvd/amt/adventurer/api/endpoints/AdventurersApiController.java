@@ -6,7 +6,6 @@ import ch.heigvd.amt.adventurer.api.model.AdventurerUpdate;
 import ch.heigvd.amt.adventurer.api.util.JwtFilterAdv;
 import ch.heigvd.amt.adventurer.entities.AdventurerEntity;
 import ch.heigvd.amt.adventurer.repositories.AdventurerRepository;
-import ch.heigvd.amt.adventurer.repositories.QuestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -21,9 +20,6 @@ public class AdventurersApiController implements AdventurersApi {
 
     @Autowired
     private AdventurerRepository adventurerRepository;
-
-    @Autowired
-    private QuestRepository questRepository;
 
     @Autowired
     private HttpServletRequest request;
