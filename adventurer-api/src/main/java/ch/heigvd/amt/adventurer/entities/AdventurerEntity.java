@@ -1,5 +1,7 @@
 package ch.heigvd.amt.adventurer.entities;
 
+import ch.heigvd.amt.adventurer.api.model.Adventurer;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
@@ -18,6 +20,15 @@ public class AdventurerEntity implements Serializable {
 
     @ManyToMany(fetch = FetchType.LAZY)
     private Set<QuestEntity> participation;
+
+    public AdventurerEntity(Adventurer adventurer,String userEmail) {
+
+        this.name=adventurer.getName();
+        this.job=adventurer.getJob();
+        this.userEmail=userEmail;
+
+
+    }
 
     public String getName() {
         return name;

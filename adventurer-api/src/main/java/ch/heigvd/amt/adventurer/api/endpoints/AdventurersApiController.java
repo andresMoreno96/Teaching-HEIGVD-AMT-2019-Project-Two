@@ -3,12 +3,14 @@ package ch.heigvd.amt.adventurer.api.endpoints;
 import ch.heigvd.amt.adventurer.api.AdventurersApi;
 import ch.heigvd.amt.adventurer.api.model.Adventurer;
 import ch.heigvd.amt.adventurer.api.model.AdventurerUpdate;
+import ch.heigvd.amt.adventurer.entities.AdventurerEntity;
 import ch.heigvd.amt.adventurer.repositories.AdventurerRepository;
 import ch.heigvd.amt.adventurer.repositories.QuestRepository;
 import ch.heigvd.amt.adventurer.services.JwtManagerAdv;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.context.request.NativeWebRequest;
 
 import javax.validation.Valid;
@@ -30,12 +32,12 @@ public class AdventurersApiController implements AdventurersApi {
 
 
     @Override
-    public Optional<NativeWebRequest> getRequest() {
-        return Optional.empty();
-    }
-
-    @Override
     public ResponseEntity<Adventurer> createAdventurer(@Valid Adventurer adventurer) {
+
+        AdventurerEntity adventurerEntity=new AdventurerEntity(adventurer);
+
+
+
         return null;
     }
 
