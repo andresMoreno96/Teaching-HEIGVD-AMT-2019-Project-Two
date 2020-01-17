@@ -2,14 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d625838d-3233-4fba-a41a-8eac3191c00c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../adventurer-api-spec.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../adventurer-api-spec.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../adventurer-api/src/main/java/ch/heigvd/amt/adventurer/configuration/SwaggerDocumentationConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../adventurer-api/src/main/java/ch/heigvd/amt/adventurer/configuration/SwaggerDocumentationConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../adventurer-api/src/main/resources/api-spec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../adventurer-api/src/main/resources/api-spec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../adventurer-api/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../adventurer-api/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../adventurer-specs/src/main/resources/api-spec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../adventurer-specs/src/main/resources/api-spec.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../topology/.env" beforeDir="false" afterPath="$PROJECT_DIR$/../topology/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../topology/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../topology/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../topology-dev/.env" beforeDir="false" afterPath="$PROJECT_DIR$/../topology-dev/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../topology-dev/start.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../topology-dev/stop.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/api/exceptions/ApiException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/api/exceptions/NotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-api/src/main/java/ch/heigvd/amt/user/api/util/ApiResponseMessage.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +64,7 @@
       <recent name="ch.heigvd.amt.user.spec.helpers" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.Adventurer API">
+  <component name="RunManager" selected="Cucumber java.User Specs">
     <configuration name="Adventurer Specs" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
       <option name="FILE_PATH" value="$PROJECT_DIR$/../adventurer-specs/src/test/resources/scenarios" />
       <option name="GLUE" value="ch.heigvd.amt.adventurer.spec.steps" />
@@ -134,7 +133,7 @@
       <updated>1578306728739</updated>
       <workItem from="1578306733786" duration="32951000" />
       <workItem from="1578916306040" duration="13168000" />
-      <workItem from="1579180171626" duration="706000" />
+      <workItem from="1579180171626" duration="2373000" />
     </task>
     <servers />
   </component>
@@ -170,38 +169,38 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="323" y="237" key="EnvironmentVariablesDialog/0.0.1440.900@0.0.1440.900" timestamp="1578316744769" />
-    <state width="1398" height="399" key="GridCell.Tab.0.bottom" timestamp="1579180483844">
+    <state width="1398" height="308" key="GridCell.Tab.0.bottom" timestamp="1579252693034">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="399" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1579180483844" />
-    <state width="1398" height="399" key="GridCell.Tab.0.center" timestamp="1579180483842">
+    <state width="1398" height="308" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1579252693034" />
+    <state width="1398" height="308" key="GridCell.Tab.0.center" timestamp="1579252693032">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="399" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1579180483842" />
-    <state width="1398" height="399" key="GridCell.Tab.0.left" timestamp="1579180483841">
+    <state width="1398" height="308" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1579252693032" />
+    <state width="1398" height="308" key="GridCell.Tab.0.left" timestamp="1579252693031">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="399" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1579180483841" />
-    <state width="1398" height="399" key="GridCell.Tab.0.right" timestamp="1579180483843">
+    <state width="1398" height="308" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1579252693031" />
+    <state width="1398" height="308" key="GridCell.Tab.0.right" timestamp="1579252693033">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="399" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1579180483843" />
-    <state width="1398" height="399" key="GridCell.Tab.1.bottom" timestamp="1579180483847">
+    <state width="1398" height="308" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1579252693033" />
+    <state width="1398" height="308" key="GridCell.Tab.1.bottom" timestamp="1579252693037">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="399" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1579180483847" />
-    <state width="1398" height="399" key="GridCell.Tab.1.center" timestamp="1579180483846">
+    <state width="1398" height="308" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1579252693037" />
+    <state width="1398" height="308" key="GridCell.Tab.1.center" timestamp="1579252693036">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="399" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1579180483846" />
-    <state width="1398" height="399" key="GridCell.Tab.1.left" timestamp="1579180483845">
+    <state width="1398" height="308" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1579252693036" />
+    <state width="1398" height="308" key="GridCell.Tab.1.left" timestamp="1579252693035">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="399" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1579180483845" />
-    <state width="1398" height="399" key="GridCell.Tab.1.right" timestamp="1579180483846">
+    <state width="1398" height="308" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1579252693035" />
+    <state width="1398" height="308" key="GridCell.Tab.1.right" timestamp="1579252693036">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="399" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1579180483846" />
+    <state width="1398" height="308" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1579252693036" />
     <state x="370" y="150" key="NewModule_or_Project.wizard" timestamp="1578306823595">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -218,5 +217,8 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="479" y="378" key="org.jetbrains.plugins.cucumber.inspections.ui.CreateStepDefinitionFileDialog/0.0.1440.900@0.0.1440.900" timestamp="1578410974145" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/idea_project$User_API.ic" NAME="User API Coverage Results" MODIFIED="1579251323815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
