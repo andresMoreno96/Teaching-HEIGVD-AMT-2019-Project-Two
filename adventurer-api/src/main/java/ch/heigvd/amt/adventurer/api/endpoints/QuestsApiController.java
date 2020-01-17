@@ -36,18 +36,18 @@ public class QuestsApiController implements QuestsApi {
     @Override
     public ResponseEntity<Adventurer> createQuest(@Valid QuestCreate quest) {
 
-        if(!adventurerRepository.existsById(quest.getAdventurerName())){
+        if (!adventurerRepository.existsById(quest.getAdventurerName())) {
             return ResponseEntity.status(400).build();
         }
 
-        AdventurerEntity adventurerEntity =adventurerRepository.findById(quest.getAdventurerName()).get();
+        AdventurerEntity adventurerEntity = adventurerRepository.findById(quest.getAdventurerName()).get();
 
         String tokenEmail = (String) request.getAttribute(JwtFilterAdv.EMAIL_REQUEST_ATTRIBUTE);
-        if (tokenEmail == null||!tokenEmail.equals(adventurerEntity.getUserEmail())){
+        if (tokenEmail == null || !tokenEmail.equals(adventurerEntity.getUserEmail())) {
             return ResponseEntity.status(401).build();
         }
 
-        QuestEntity questEntity= new QuestEntity(quest,adventurerEntity);
+        QuestEntity questEntity = new QuestEntity(quest, adventurerEntity);
 
         questRepository.save(questEntity);
 
@@ -60,9 +60,22 @@ public class QuestsApiController implements QuestsApi {
     @Override
     public ResponseEntity<Void> deleteQuest(Integer id) {
 
+        if (!questRepository.existsById(id.toString())) {
+
+            return ResponseEntity.status(400).build();
+        }
+
+        QuestEntity questEntity = questRepository.findById(id.toString()).get();
+
+        String tokenEmail = (String) request.getAttribute(JwtFilterAdv.EMAIL_REQUEST_ATTRIBUTE);
+        if (tokenEmail == null || !tokenEmail.equals(questEntity.getOwner().getUserEmail())) {
+            return ResponseEntity.status(401).build();
+        }
+
+        questRepository.deleteById(id.toString());
 
 
-        return null;
+        return ResponseEntity.status(200).build();
     }
 
     @Override

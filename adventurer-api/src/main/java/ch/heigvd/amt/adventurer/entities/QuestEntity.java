@@ -56,4 +56,29 @@ public class QuestEntity implements Serializable {
         return new Quest().id(id).description(description)
                 .ended(ended).title(title).adventurerName(owner.getName());
     }
+
+
+    public long getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public boolean isEnded() {
+        return ended;
+    }
+
+    public AdventurerEntity getOwner() {
+        return owner;
+    }
+
+    public Set<AdventurerEntity> getParticipants() {
+        return participants;
+    }
 }
