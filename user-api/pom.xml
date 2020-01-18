@@ -131,12 +131,6 @@
             <artifactId>java-jwt</artifactId>
             <version>3.8.3</version>
         </dependency>
-        <!-- Random data generator -->
-        <dependency>
-            <groupId>com.github.javafaker</groupId>
-            <artifactId>javafaker</artifactId>
-            <version>1.0.1</version>
-        </dependency>
         <dependency>
             <groupId>org.mindrot</groupId>
             <artifactId>jbcrypt</artifactId>
