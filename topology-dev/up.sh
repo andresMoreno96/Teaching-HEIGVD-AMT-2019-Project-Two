@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# backup .env file
-cp .env .env-backup
+# create temporary .env file
+touch .env
 
 if (( $# > 0 )); then
     # remove old data
@@ -20,5 +20,5 @@ fi
 
 docker-compose up --build
 
-# reset .env
-mv .env-backup .env
+# remove temporary .env file
+rm .env

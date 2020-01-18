@@ -6,7 +6,7 @@ services:
     restart: always
     environment:
       LOAD_DATA: $LOAD_DATA
-      MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+      MYSQL_ROOT_PASSWORD: secret
     ports:
       - 3306:3306
     volumes:
@@ -17,7 +17,7 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+      MYSQL_ROOT_PASSWORD: secret
     ports:
       - 3307:3306
     volumes:
@@ -33,3 +33,9 @@ services:
      - adventurer-api-db
     ports:
      - 8888:80
+
+  mail-server:
+    image: mailhog/mailhog:latest
+    ports:
+      - 2525:1025
+      - 8889:8025
