@@ -9,9 +9,9 @@ import ch.heigvd.amt.user.entities.UserEntity;
 import ch.heigvd.amt.user.repositories.PasswordResetsRepository;
 import ch.heigvd.amt.user.repositories.UsersRepository;
 import ch.heigvd.amt.user.services.PasswordService;
-import ch.heigvd.amt.userEmail.api.UsersApi;
-import ch.heigvd.amt.userEmail.api.model.User;
-import ch.heigvd.amt.userEmail.api.model.UserNoPassword;
+import ch.heigvd.amt.user.api.UsersApi;
+import ch.heigvd.amt.user.api.model.User;
+import ch.heigvd.amt.user.api.model.UserNoPassword;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 

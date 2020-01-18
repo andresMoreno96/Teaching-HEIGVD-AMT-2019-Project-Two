@@ -4,7 +4,7 @@ package ch.heigvd.amt.user.services;
 import ch.heigvd.amt.user.entities.PasswordResetEntity;
 import ch.heigvd.amt.user.entities.UserEntity;
 import ch.heigvd.amt.user.repositories.UsersRepository;
-import ch.heigvd.amt.userEmail.api.model.User;
+import ch.heigvd.amt.user.api.model.User;
 import com.github.javafaker.Faker;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;

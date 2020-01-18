@@ -2,8 +2,8 @@ package ch.heigvd.amt.user.entities;
 
 
 
-import ch.heigvd.amt.userEmail.api.model.User;
-import ch.heigvd.amt.userEmail.api.model.UserNoPassword;
+import ch.heigvd.amt.user.api.model.User;
+import ch.heigvd.amt.user.api.model.UserNoPassword;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;

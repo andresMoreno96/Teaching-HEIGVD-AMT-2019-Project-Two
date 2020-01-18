@@ -5,7 +5,7 @@ import ch.heigvd.amt.user.entities.UserEntity;
 import ch.heigvd.amt.user.services.JwtManager;
 import ch.heigvd.amt.user.repositories.UsersRepository;
 import ch.heigvd.amt.user.services.PasswordService;
-import ch.heigvd.amt.userEmail.api.AuthenticationApi;
+import ch.heigvd.amt.user.api.AuthenticationApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;

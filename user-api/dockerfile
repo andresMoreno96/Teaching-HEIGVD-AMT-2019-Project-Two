@@ -5,4 +5,4 @@ COPY . /usr/src/api
 WORKDIR /usr/src/api
 
 RUN mvn clean package
-CMD ["java", "-jar", "./target/userEmail-1.0.0.jar"]
+CMD ["java", "-jar", "./target/user-1.0.0.jar"]
