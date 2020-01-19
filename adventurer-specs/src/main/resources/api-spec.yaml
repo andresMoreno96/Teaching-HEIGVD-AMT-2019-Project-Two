@@ -14,7 +14,7 @@ paths:
         - application/json
       parameters:
         - $ref: '#/parameters/Limit'
-        - $ref: '#/parameters/Offset'
+        - $ref: '#/parameters/Page'
       responses:
         200:
           description: adventurers
@@ -106,7 +106,7 @@ paths:
         - application/json
       parameters:
         - $ref: '#/parameters/Limit'
-        - $ref: '#/parameters/Offset'
+        - $ref: '#/parameters/Page'
       responses:
         200:
           description: quests
@@ -291,8 +291,8 @@ parameters:
     in: query
     type: string
     description: The quantity of elements to retrieve
-  Offset:
-    name: offset
+  Page:
+    name: page
     in: query
     type: string
     description: The number of elements to omit
