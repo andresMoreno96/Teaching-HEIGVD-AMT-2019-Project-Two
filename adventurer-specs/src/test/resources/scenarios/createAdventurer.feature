@@ -28,3 +28,4 @@ Feature: Creation of an Adventurer
     Given  the adventurer "Tony1998" is a "rune master"
     When I POST it into the /adventurers endpoint
     Then I receive a 401 status code
+

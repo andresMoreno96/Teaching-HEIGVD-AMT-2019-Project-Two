@@ -91,7 +91,7 @@ public class QuestsApiController implements QuestsApi {
         questRepository.save(questEntity);
 
 
-        return ResponseEntity.status(200).build();
+        return ResponseEntity.status(200).body(questEntity.toQuest());
 
 
     }
