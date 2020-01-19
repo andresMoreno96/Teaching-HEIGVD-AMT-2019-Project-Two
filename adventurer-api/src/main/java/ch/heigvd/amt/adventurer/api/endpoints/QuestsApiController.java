@@ -11,12 +11,14 @@ import ch.heigvd.amt.adventurer.entities.QuestEntity;
 import ch.heigvd.amt.adventurer.repositories.AdventurerRepository;
 import ch.heigvd.amt.adventurer.repositories.QuestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.context.request.NativeWebRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
@@ -105,11 +107,33 @@ public class QuestsApiController implements QuestsApi {
     }
 
     @Override
-    public ResponseEntity<List<Quest>> getQuests(@Valid String limit, @Valid String offset) {
+    public ResponseEntity<List<Quest>> getQuests(@Valid String limitValue, @Valid String pageValue) {
 
-            questRepository.findAll();
+        Integer limit = toNumber(limitValue);
+        Integer page = toNumber(pageValue);
 
-        return null;
+        LinkedList<Quest> quests = new LinkedList<>();
+        if (limit != null) {
+            questRepository.findAll(PageRequest.of(page != null ? page : 0, limit))
+                    .forEach(entity -> quests.add(entity.toQuest()));
+        } else {
+            questRepository.findAll()
+                    .forEach(entity -> quests.add(entity.toQuest()));
+        }
+
+        return ResponseEntity.ok(quests);
+    }
+
+    private Integer toNumber(String value) {
+        if (value == null) {
+            return null;
+        }
+
+        try {
+            return Integer.valueOf(value);
+        } catch (NumberFormatException e) {
+            return null;
+        }
     }
 
     @Override

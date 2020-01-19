@@ -7,6 +7,7 @@ import ch.heigvd.amt.adventurer.api.util.JwtFilterAdv;
 import ch.heigvd.amt.adventurer.entities.AdventurerEntity;
 import ch.heigvd.amt.adventurer.repositories.AdventurerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 
@@ -15,9 +16,11 @@ import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.Validator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Controller
 public class AdventurersApiController implements AdventurersApi {
@@ -84,8 +87,33 @@ public class AdventurersApiController implements AdventurersApi {
     }
 
     @Override
-    public ResponseEntity<List<Adventurer>> getAdventurers(@Valid String limit, @Valid String offset) {
-        return null;
+    public ResponseEntity<List<Adventurer>> getAdventurers(@Valid String limitValue, @Valid String pageValue) {
+
+        Integer limit = toNumber(limitValue);
+        Integer page = toNumber(pageValue);
+
+        final LinkedList<Adventurer> adventurers = new LinkedList<>();
+        if (limit != null) {
+            adventurerRepository.findAll(PageRequest.of(page != null ? page : 0, limit))
+                    .forEach(entity -> adventurers.add(entity.toAdventurer()));
+        } else {
+            adventurerRepository.findAll()
+                    .forEach(entity -> adventurers.add(entity.toAdventurer()));
+        }
+
+        return ResponseEntity.ok(adventurers);
+    }
+
+    private Integer toNumber(String value) {
+        if (value == null) {
+            return null;
+        }
+
+        try {
+            return Integer.valueOf(value);
+        } catch (NumberFormatException e) {
+            return null;
+        }
     }
 
     @Override
