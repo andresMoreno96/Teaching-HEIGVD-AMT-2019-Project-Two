@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class AdventurersApiController implements AdventurersApi {
@@ -64,19 +65,14 @@ public class AdventurersApiController implements AdventurersApi {
 
     @Override
     public ResponseEntity<Adventurer> getAdventurer(String name) {
-
-        if (!adventurerRepository.existsById(name)) {
-
-            return ResponseEntity.status(400).build();
+        Optional<AdventurerEntity> adventurer = adventurerRepository.findById(name);
+        if (adventurer.isPresent()) {
+            System.out.println("OK");
+            return ResponseEntity.status(200).body(adventurer.get().toAdventurer());
         }
 
-        if (validatesTheRightUser(name)){
-
-            return ResponseEntity.status(401).build();
-        }
-
-        return adventurerRepository.findById(name).map(adventurerEntity -> ResponseEntity.status(200).body(adventurerEntity.toAdventurer()))
-                .orElseGet(() -> ResponseEntity.status(404).build());
+        System.out.println("NOT OK");
+        return ResponseEntity.status(404).build();
     }
 
     @Override

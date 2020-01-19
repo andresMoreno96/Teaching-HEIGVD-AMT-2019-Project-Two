@@ -34,7 +34,7 @@ public class QuestsApiController implements QuestsApi {
 
 
     @Override
-    public ResponseEntity<Adventurer> createQuest(@Valid QuestCreate quest) {
+    public ResponseEntity<Quest> createQuest(@Valid QuestCreate quest) {
 
         if (!adventurerRepository.existsById(quest.getAdventurerName())) {
             return ResponseEntity.status(400).build();
@@ -49,7 +49,7 @@ public class QuestsApiController implements QuestsApi {
         questRepository.save(questEntity);
 
 
-        return ResponseEntity.status(200).build();
+        return ResponseEntity.status(200).body(questEntity.toQuest());
 
 
     }

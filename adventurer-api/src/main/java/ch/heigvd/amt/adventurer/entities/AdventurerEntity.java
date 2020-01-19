@@ -63,5 +63,5 @@ public class AdventurerEntity implements Serializable {
     public void setUserEmail(String userEmail) {
         this.userEmail = userEmail;
     }
-    
+
 }
