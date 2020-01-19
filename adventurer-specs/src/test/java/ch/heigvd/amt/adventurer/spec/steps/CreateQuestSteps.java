@@ -33,7 +33,7 @@ public class CreateQuestSteps {
     }
 
 
-    @And("^wants to create the quest \"([^\"]*)\" with the objective of \"([^\"]*)\"$")
+    @And("^the quest \"([^\"]*)\" with the objective of \"([^\"]*)\"$")
     public void wantsToCreateTheQuestWithTheObjectiveOf(String title, String description) throws Throwable {
 
         env.quest=new Quest().adventurerName(env.adventurer.getName()).title(title).description(description);
