@@ -68,9 +68,13 @@ Adventures-Api
 
 ### Cucumber
 
-In order to run the 
+In order to test both backends, we've used cucumber for testing the different api. Cucumber is a software tool used by computer programmers that supports behavior-driven development.  
 
+example of  test scenarios used at the adventurer-api.
 
+![Screenshot 2020-01-19 at 22.58.12](README-images/Screenshot 2020-01-19 at 22.58.12.png)
+
+This tests enable us to test the crud (Create read update and delete) Methods. It will interact with the database. 
 
 
 
@@ -78,5 +82,5 @@ In order to run the
 
 ## **Known bugs and limitations**
 
-
+- The delete method is implemented and functional but when the test cucumber are executed the delete method unfortunately cant find the quest. (we couldn't find the issue).
 
