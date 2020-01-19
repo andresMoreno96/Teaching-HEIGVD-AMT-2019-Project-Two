@@ -99,7 +99,6 @@ public class QuestsApiController implements QuestsApi {
     @Override
     public ResponseEntity<Quest> getQuest(Integer id) {
 
-
         return questRepository.findById(id.toString())
                 .map(questEntity->ResponseEntity.status(200).body(questEntity.toQuest()))
                 .orElseGet(()->ResponseEntity.status(404).build());
@@ -107,12 +106,32 @@ public class QuestsApiController implements QuestsApi {
 
     @Override
     public ResponseEntity<List<Quest>> getQuests(@Valid String limit, @Valid String offset) {
+
+            questRepository.findAll();
+
         return null;
     }
 
     @Override
     public ResponseEntity<Quest> updateQuest(Integer id, @Valid QuestUpdate informations) {
-        return null;
+
+        QuestEntity questEntity = checkIfExistAndReturnQuest(id);
+
+        if (questEntity == null) {
+            return ResponseEntity.status(400).build();
+        }
+
+
+        if (validateAccount(questEntity.getOwner())) {
+            return ResponseEntity.status(401).build();
+        }
+
+        questEntity.setTitle(informations.getTitle());
+        questEntity.setDescription(informations.getDescription());
+
+        questRepository.save(questEntity);
+
+        return ResponseEntity.status(200).build();
     }
 
 

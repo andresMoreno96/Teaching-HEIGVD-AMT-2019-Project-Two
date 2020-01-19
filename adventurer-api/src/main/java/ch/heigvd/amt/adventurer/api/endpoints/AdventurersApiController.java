@@ -50,8 +50,7 @@ public class AdventurersApiController implements AdventurersApi {
             return ResponseEntity.status(400).build();
         }
 
-        String tokenEmail = (String) request.getAttribute(JwtFilterAdv.EMAIL_REQUEST_ATTRIBUTE);
-        if (tokenEmail == null || !tokenEmail.equals(adventurerRepository.findById(name).get().getUserEmail())) {
+        if (validatesTheRightUser(name)){
 
             return ResponseEntity.status(401).build();
         }
@@ -62,6 +61,7 @@ public class AdventurersApiController implements AdventurersApi {
 
     }
 
+
     @Override
     public ResponseEntity<Adventurer> getAdventurer(String name) {
 
@@ -70,8 +70,7 @@ public class AdventurersApiController implements AdventurersApi {
             return ResponseEntity.status(400).build();
         }
 
-        String tokenEmail = (String) request.getAttribute(JwtFilterAdv.EMAIL_REQUEST_ATTRIBUTE);
-        if (tokenEmail == null || !tokenEmail.equals(adventurerRepository.findById(name).get().getUserEmail())) {
+        if (validatesTheRightUser(name)){
 
             return ResponseEntity.status(401).build();
         }
@@ -87,6 +86,30 @@ public class AdventurersApiController implements AdventurersApi {
 
     @Override
     public ResponseEntity<Adventurer> updateAdventurer(String name, @Valid AdventurerUpdate informations) {
-        return null;
+
+        if (!adventurerRepository.existsById(name)) {
+
+            return ResponseEntity.status(400).build();
+        }
+
+        AdventurerEntity adventurerEntity=adventurerRepository.findById(name).get();
+
+        adventurerEntity.setJob(informations.getJob());
+
+        adventurerRepository.save(adventurerEntity);
+
+        return ResponseEntity.status(200).build();
+
+
+    }
+
+
+    private boolean validatesTheRightUser(String name) {
+        String tokenEmail = (String) request.getAttribute(JwtFilterAdv.EMAIL_REQUEST_ATTRIBUTE);
+        if (tokenEmail == null || !tokenEmail.equals(adventurerRepository.findById(name).get().getUserEmail())) {
+
+            return true;
+        }
+        return false;
     }
 }
