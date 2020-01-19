@@ -30,7 +30,7 @@ public class AdventurersApiController implements AdventurersApi {
 
         String tokenEmail = (String) request.getAttribute(JwtFilterAdv.EMAIL_REQUEST_ATTRIBUTE);
         if (tokenEmail == null) {
-            return ResponseEntity.status(406).build();
+            return ResponseEntity.status(401).build();
         }
 
         AdventurerEntity adventurerEntity = new AdventurerEntity(adventurer, tokenEmail);

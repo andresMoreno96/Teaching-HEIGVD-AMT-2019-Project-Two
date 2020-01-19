@@ -60,7 +60,8 @@ public class JwtManagerAdv {
     }
 
     public boolean checkExpiration(DecodedJWT decodedJWT) {
-        return decodedJWT.getExpiresAt().after(new Date());
+        Date expiresAt = decodedJWT.getExpiresAt();
+        return expiresAt == null || expiresAt.after(new Date());
     }
 
     private Date calculateExpiration(int hours) {

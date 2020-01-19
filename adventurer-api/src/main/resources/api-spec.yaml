@@ -231,12 +231,12 @@ paths:
       operationId: quitQuest
       summary: An adventurer quits a quest
       parameters:
-        - name: adventurer
+        - name: adventurerName
           description: Adventurer joining a quest.
           in: formData
           type: string
           required: true
-        - name: quest
+        - name: questId
           description: Quest to join.
           in: formData
           type: integer
@@ -252,10 +252,6 @@ paths:
           description: adventurer or quest not found
         405:
           description: cannot quit an ended quest
-          headers:
-            Allow:
-              type: string
-              description: Allowed methods
 securityDefinitions:
   Bearer:
     type: apiKey

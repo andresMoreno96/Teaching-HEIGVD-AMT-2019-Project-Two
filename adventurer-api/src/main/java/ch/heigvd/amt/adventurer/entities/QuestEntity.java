@@ -28,18 +28,17 @@ public class QuestEntity implements Serializable {
     @JoinColumn(nullable = false)
     private AdventurerEntity owner;
 
-
-
     @ManyToMany(mappedBy = "participation", fetch = FetchType.LAZY)
     private Set<AdventurerEntity> participants;
+
+    public QuestEntity() {
+    }
 
     public QuestEntity(QuestCreate questCreate, AdventurerEntity adventurerEntity){
 
         this.title=questCreate.getTitle();
         this.description=questCreate.getDescription();
         this.owner=adventurerEntity;
-
-
     }
 
     public QuestEntity(Quest quest, AdventurerEntity adventurerEntity) {
@@ -48,8 +47,6 @@ public class QuestEntity implements Serializable {
         this.ended = quest.getEnded();
         this.title = quest.getTitle();
         this.owner = adventurerEntity;
-
-
     }
 
     public Quest toQuest() {

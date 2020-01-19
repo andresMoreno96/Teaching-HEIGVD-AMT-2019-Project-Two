@@ -48,6 +48,10 @@ public class AdventurerEntity implements Serializable {
         return userEmail;
     }
 
+    public Set<QuestEntity> getParticipation() {
+        return participation;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -59,4 +63,5 @@ public class AdventurerEntity implements Serializable {
     public void setUserEmail(String userEmail) {
         this.userEmail = userEmail;
     }
+    
 }

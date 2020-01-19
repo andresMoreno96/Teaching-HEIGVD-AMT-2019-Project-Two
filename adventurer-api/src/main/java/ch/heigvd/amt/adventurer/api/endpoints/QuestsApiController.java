@@ -66,7 +66,7 @@ public class QuestsApiController implements QuestsApi {
             return ResponseEntity.status(401).build();
         }
 
-        questRepository.deleteById(id.toString());
+        questRepository.deleteById((long) id);
 
 
         return ResponseEntity.status(200).build();
@@ -99,7 +99,7 @@ public class QuestsApiController implements QuestsApi {
     @Override
     public ResponseEntity<Quest> getQuest(Integer id) {
 
-        return questRepository.findById(id.toString())
+        return questRepository.findById((long) id)
                 .map(questEntity->ResponseEntity.status(200).body(questEntity.toQuest()))
                 .orElseGet(()->ResponseEntity.status(404).build());
     }
@@ -136,13 +136,8 @@ public class QuestsApiController implements QuestsApi {
 
 
     private QuestEntity checkIfExistAndReturnQuest(Integer id) {
-
-        if (questRepository.existsById(id.toString())) {
-
-            return questRepository.findById(id.toString()).get();
-
-        }
-        return null;
+        Optional<QuestEntity> quest = questRepository.findById((long) id);
+        return quest.orElse(null);
     }
 
     private boolean validateAccount(AdventurerEntity owner) {
