@@ -81,4 +81,8 @@ public class QuestEntity implements Serializable {
     public Set<AdventurerEntity> getParticipants() {
         return participants;
     }
+
+    public void setEnded(boolean ended) {
+        this.ended = ended;
+    }
 }

@@ -42,10 +42,7 @@ public class QuestsApiController implements QuestsApi {
 
         AdventurerEntity adventurerEntity = adventurerRepository.findById(quest.getAdventurerName()).get();
 
-        String tokenEmail = (String) request.getAttribute(JwtFilterAdv.EMAIL_REQUEST_ATTRIBUTE);
-        if (tokenEmail == null || !tokenEmail.equals(adventurerEntity.getUserEmail())) {
-            return ResponseEntity.status(401).build();
-        }
+        if (validateAccount(adventurerEntity)) return ResponseEntity.status(401).build();
 
         QuestEntity questEntity = new QuestEntity(quest, adventurerEntity);
 
@@ -60,15 +57,12 @@ public class QuestsApiController implements QuestsApi {
     @Override
     public ResponseEntity<Void> deleteQuest(Integer id) {
 
-        if (!questRepository.existsById(id.toString())) {
-
+        QuestEntity questEntity = checkIfExistAndReturnQuest(id);
+        if (questEntity == null) {
             return ResponseEntity.status(400).build();
         }
 
-        QuestEntity questEntity = questRepository.findById(id.toString()).get();
-
-        String tokenEmail = (String) request.getAttribute(JwtFilterAdv.EMAIL_REQUEST_ATTRIBUTE);
-        if (tokenEmail == null || !tokenEmail.equals(questEntity.getOwner().getUserEmail())) {
+        if (validateAccount(questEntity.getOwner())) {
             return ResponseEntity.status(401).build();
         }
 
@@ -78,14 +72,37 @@ public class QuestsApiController implements QuestsApi {
         return ResponseEntity.status(200).build();
     }
 
+
     @Override
     public ResponseEntity<Quest> endQuest(Integer id) {
-        return null;
+
+        QuestEntity questEntity = checkIfExistAndReturnQuest(id);
+
+        if (questEntity == null) {
+            return ResponseEntity.status(400).build();
+        }
+
+        if (validateAccount(questEntity.getOwner())) {
+            return ResponseEntity.status(401).build();
+        }
+
+        questEntity.setEnded(true);
+
+        questRepository.save(questEntity);
+
+
+        return ResponseEntity.status(200).build();
+
+
     }
 
     @Override
     public ResponseEntity<Quest> getQuest(Integer id) {
-        return null;
+
+
+        return questRepository.findById(id.toString())
+                .map(questEntity->ResponseEntity.status(200).body(questEntity.toQuest()))
+                .orElseGet(()->ResponseEntity.status(404).build());
     }
 
     @Override
@@ -97,4 +114,24 @@ public class QuestsApiController implements QuestsApi {
     public ResponseEntity<Quest> updateQuest(Integer id, @Valid QuestUpdate informations) {
         return null;
     }
+
+
+    private QuestEntity checkIfExistAndReturnQuest(Integer id) {
+
+        if (questRepository.existsById(id.toString())) {
+
+            return questRepository.findById(id.toString()).get();
+
+        }
+        return null;
+    }
+
+    private boolean validateAccount(AdventurerEntity owner) {
+        String tokenEmail = (String) request.getAttribute(JwtFilterAdv.EMAIL_REQUEST_ATTRIBUTE);
+        if (tokenEmail == null || !tokenEmail.equals(owner.getUserEmail())) {
+            return true;
+        }
+        return false;
+    }
+
 }
