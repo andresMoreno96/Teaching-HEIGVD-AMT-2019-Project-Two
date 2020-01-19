@@ -37,7 +37,7 @@ public class AdventurersApiController implements AdventurersApi {
         AdventurerEntity adventurerEntity = new AdventurerEntity(adventurer, tokenEmail);
         if (!adventurerRepository.existsById(adventurerEntity.getName())) {
             adventurerRepository.save(adventurerEntity);
-            return ResponseEntity.status(200).build();
+            return ResponseEntity.status(200).body(adventurerEntity.toAdventurer());
         }
 
         return ResponseEntity.status(400).build();
