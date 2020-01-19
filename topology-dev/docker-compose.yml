@@ -37,5 +37,5 @@ services:
   mail-server:
     image: mailhog/mailhog:latest
     ports:
-      - 2525:1025
+      - 1025:1025
       - 8889:8025

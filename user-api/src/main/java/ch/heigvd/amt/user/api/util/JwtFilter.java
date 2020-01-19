@@ -39,8 +39,8 @@ public class JwtFilter implements Filter {
                     request.setAttribute(EMAIL_REQUEST_ATTRIBUTE, email);
                 }
 
-                long pwdReset = jwtManager.getPasswordReset(decodedJWT);
-                if (pwdReset >= 0) {
+                String pwdReset = jwtManager.getPasswordReset(decodedJWT);
+                if (pwdReset != null) {
                     request.setAttribute(PWD_RESET_REQUEST_ATTRIBUTE, pwdReset);
                 }
             }

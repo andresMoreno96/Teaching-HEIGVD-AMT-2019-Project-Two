@@ -34,7 +34,7 @@ public class JwtManager {
                 .sign(algorithm);
     }
 
-    public String createToken(String email, long pwdReset) {
+    public String createToken(String email, String pwdReset) {
         return JWT.create()
                 .withClaim(USER_EMAIL, email)
                 .withClaim(PWD_RESET, pwdReset)
@@ -55,9 +55,9 @@ public class JwtManager {
         return !claim.isNull() ? claim.asString() : null;
     }
 
-    public long getPasswordReset(DecodedJWT decodedJWT) {
+    public String getPasswordReset(DecodedJWT decodedJWT) {
         Claim claim = decodedJWT.getClaim(PWD_RESET);
-        return !claim.isNull() ? claim.asLong() : -1;
+        return !claim.isNull() ? claim.asString() : null;
     }
 
     public boolean checkExpiration(DecodedJWT decodedJWT) {

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: user-api-db
--- Generation Time: Jan 13, 2020 at 05:20 PM
+-- Generation Time: Jan 19, 2020 at 11:14 AM
 -- Server version: 5.7.28
 -- PHP Version: 7.4.1
 
@@ -31,10 +31,9 @@ USE `user_api`;
 --
 
 CREATE TABLE IF NOT EXISTS `password_reset_entity` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `uuid` varchar(255) NOT NULL,
   `user_email` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FKj9wq0qj4q90g2naaf77h6onks` (`user_email`)
+  PRIMARY KEY (`user_email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -61,13 +60,6 @@ CREATE TABLE IF NOT EXISTS `user_entity` (
 --
 
 TRUNCATE TABLE `user_entity`;
---
--- Dumping data for table `user_entity`
---
-
-INSERT INTO `user_entity` (`email`, `first_name`, `last_name`, `password`) VALUES
-('jack@pot.ato', 'string', 'string', '$2a$10$IOLKcXHPD8f.72pFK3x99.VjHihuQH0ZTb.ezr2MAO0IZTddlyr/G');
-
 --
 -- Constraints for dumped tables
 --

@@ -6,6 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface PasswordResetsRepository extends CrudRepository<PasswordResetEntity, Long> {
-    PasswordResetEntity findByIdAndUserEmail(long id, String email);
+public interface PasswordResetsRepository extends CrudRepository<PasswordResetEntity, UserEntity> {
+    PasswordResetEntity findByUserEmailAndUuid(String email, String uuid);
 }

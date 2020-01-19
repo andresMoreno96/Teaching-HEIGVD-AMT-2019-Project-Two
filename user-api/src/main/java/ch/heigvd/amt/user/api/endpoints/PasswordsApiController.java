@@ -17,12 +17,6 @@ import javax.servlet.http.HttpServletRequest;
 public class PasswordsApiController implements PasswordsApi {
 
     @Autowired
-    private PasswordResetsRepository passwordResetsRepository;
-
-    @Autowired
-    private UsersRepository usersRepository;
-
-    @Autowired
     private HttpServletRequest request;
 
     @Autowired
@@ -32,20 +26,10 @@ public class PasswordsApiController implements PasswordsApi {
     public ResponseEntity<Void> changePassword(String password) {
 
         String email = (String) request.getAttribute(JwtFilter.EMAIL_REQUEST_ATTRIBUTE);
-        Long id = (Long) request.getAttribute(JwtFilter.PWD_RESET_REQUEST_ATTRIBUTE);
+        String uuid = (String) request.getAttribute(JwtFilter.PWD_RESET_REQUEST_ATTRIBUTE);
 
-        if (email != null && id != null) {
-
-            PasswordResetEntity reset = passwordResetsRepository.findByIdAndUserEmail(id, email);
-
-            if (reset != null) {
-
-                reset.getUser().setPassword(passwordService.hashPassword(password));
-                usersRepository.save(reset.getUser());
-                passwordResetsRepository.delete(reset);
-
-                return ResponseEntity.status(200).build();
-            }
+        if (email != null && uuid != null && passwordService.resetPassword(email, uuid, password)) {
+            return ResponseEntity.status(200).build();
         }
 
         return ResponseEntity.status(401).build();

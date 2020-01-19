@@ -1,4 +1,4 @@
 #!/bin/sh
 if [ "$LOAD_DATA" != "true" ]; then
-    rm ./*.sql
+    rm /docker-entrypoint-initdb.d/*.sql
 fi

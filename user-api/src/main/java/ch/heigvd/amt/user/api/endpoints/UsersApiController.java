@@ -87,11 +87,10 @@ public class UsersApiController implements UsersApi {
             return ResponseEntity.status(404).build();
         }
 
-        PasswordResetEntity pwdReset = new PasswordResetEntity(user.get());
-        passwordResetsRepository.save(pwdReset);
+        PasswordResetEntity pwdReset = passwordService.createResetRequest(user.get());
 
         String token = jwtManager.createToken(
-                pwdReset.getUser().getEmail(), pwdReset.getId()
+                pwdReset.getUser().getEmail(), pwdReset.getUuid()
         );
 
         //Send email

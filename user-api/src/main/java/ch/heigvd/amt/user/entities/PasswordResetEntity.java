@@ -1,40 +1,54 @@
 package ch.heigvd.amt.user.entities;
 
-import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.GenerationTime;
 
+import javax.annotation.Generated;
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.UUID;
 
 @Entity
 @Table(schema = "user_api")
 public class PasswordResetEntity implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private String email;
 
-    @ManyToOne(optional = false)
+    @MapsId
+    @OneToOne(optional = false, fetch = FetchType.EAGER)
     private UserEntity user;
 
-    public PasswordResetEntity() {}
+    @Column(nullable = false)
+    private String uuid;
+
+    public PasswordResetEntity() {
+        uuid = UUID.randomUUID().toString();
+    }
 
     public PasswordResetEntity(UserEntity user) {
         this();
+        setEmail(user.getEmail());
         setUser(user);
     }
 
-    public long getId() {
-        return id;
+    public String getEmail() {
+        return email;
+    }
+
+    public String getUuid() {
+        return uuid;
     }
 
     public UserEntity getUser() {
         return user;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
     public void setUser(UserEntity user) {
