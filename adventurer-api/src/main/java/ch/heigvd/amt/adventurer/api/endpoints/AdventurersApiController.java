@@ -11,9 +11,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
+import javax.validation.Validator;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Controller
 public class AdventurersApiController implements AdventurersApi {
@@ -25,6 +29,9 @@ public class AdventurersApiController implements AdventurersApi {
     @Autowired
     private HttpServletRequest request;
 
+    @Autowired
+    private Validator validator;
+
 
     @Override
     public ResponseEntity<Adventurer> createAdventurer(@Valid Adventurer adventurer) {
@@ -35,6 +42,12 @@ public class AdventurersApiController implements AdventurersApi {
         }
 
         AdventurerEntity adventurerEntity = new AdventurerEntity(adventurer, tokenEmail);
+
+        Set<ConstraintViolation<AdventurerEntity>> violations = validator.validate(adventurerEntity);
+        if (!violations.isEmpty()) {
+            throw new ConstraintViolationException(violations);
+        }
+
         if (!adventurerRepository.existsById(adventurerEntity.getName())) {
             adventurerRepository.save(adventurerEntity);
             return ResponseEntity.status(200).build();

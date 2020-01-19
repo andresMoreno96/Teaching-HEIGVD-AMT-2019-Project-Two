@@ -3,6 +3,8 @@ package ch.heigvd.amt.adventurer.entities;
 import ch.heigvd.amt.adventurer.api.model.Adventurer;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.Set;
 
@@ -11,10 +13,12 @@ import java.util.Set;
 public class AdventurerEntity implements Serializable {
 
     @Id
+    @NotBlank
     private String name;
 
     private String job;
 
+    @Email
     @Column(nullable = false)
     private String userEmail;
 
