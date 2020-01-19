@@ -18,6 +18,10 @@ For our business, we've decided to implement a adventure game, where adventures 
 
 ## Docker-Topology
 
+Inside the file we can find 2 different version topology and topology-dev. The first 
+
+
+
 ### Prod
 
 
@@ -42,7 +46,33 @@ For our business, we've decided to implement a adventure game, where adventures 
 
 ### JMetter
 
+User-Api  reset password request :
+
+![Screenshot 2020-01-19 at 22.38.55](README-images/Screenshot 2020-01-19 at 22.38.55.png)
+
+![Screenshot 2020-01-19 at 22.38.00](README-images/Screenshot 2020-01-19 at 22.38.00.png)
+
+
+
+User-Api Authentication request:
+
+![Screenshot 2020-01-19 at 22.50.08](README-images/Screenshot 2020-01-19 at 22.50.08.png)
+
+![Screenshot 2020-01-19 at 22.50.25](README-images/Screenshot 2020-01-19 at 22.50.25.png)
+
+
+
+Adventures-Api 
+
+
+
 ### Cucumber
+
+In order to run the 
+
+
+
+
 
 
 
