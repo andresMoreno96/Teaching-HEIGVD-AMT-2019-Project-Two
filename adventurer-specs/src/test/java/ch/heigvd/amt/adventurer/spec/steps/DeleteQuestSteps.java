@@ -63,6 +63,7 @@ public class DeleteQuestSteps {
                             .description(description));
 
         } catch (ApiException ignore) {
+            Assert.fail("no quest");
         } finally {
             Environment.getApi().getApiClient().setApiKey(null);
         }

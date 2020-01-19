@@ -24,7 +24,7 @@ public class QuestEntity implements Serializable {
     @ColumnDefault("false")
     private boolean ended;
 
-    @OneToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(nullable = false)
     private AdventurerEntity owner;
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: adventurer-api-db
--- Generation Time: Jan 19, 2020 at 07:43 PM
+-- Generation Time: Jan 19, 2020 at 09:51 PM
 -- Server version: 5.7.28
 -- PHP Version: 7.4.1
 
@@ -30,11 +30,10 @@ USE `adventurer_api`;
 -- Table structure for table `adventurer_entity`
 --
 
-CREATE TABLE IF NOT EXISTS `adventurer_entity` (
+CREATE TABLE `adventurer_entity` (
   `name` varchar(255) NOT NULL,
   `job` varchar(255) DEFAULT NULL,
-  `user_email` varchar(255) NOT NULL,
-  PRIMARY KEY (`name`)
+  `user_email` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -48,11 +47,9 @@ TRUNCATE TABLE `adventurer_entity`;
 -- Table structure for table `adventurer_entity_participation`
 --
 
-CREATE TABLE IF NOT EXISTS `adventurer_entity_participation` (
+CREATE TABLE `adventurer_entity_participation` (
   `participants_name` varchar(255) NOT NULL,
-  `participation_id` bigint(20) NOT NULL,
-  PRIMARY KEY (`participants_name`,`participation_id`),
-  KEY `FKa5nguyq6xfse0e6yytq2hsfef` (`participation_id`)
+  `participation_id` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -66,14 +63,12 @@ TRUNCATE TABLE `adventurer_entity_participation`;
 -- Table structure for table `quest_entity`
 --
 
-CREATE TABLE IF NOT EXISTS `quest_entity` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `quest_entity` (
+  `id` bigint(20) NOT NULL,
   `description` varchar(255) DEFAULT NULL,
   `ended` bit(1) NOT NULL DEFAULT b'0',
   `title` varchar(255) NOT NULL,
-  `owner_name` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `UK_pbnri24eq1htvox2x2y6bewya` (`owner_name`)
+  `owner_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -81,6 +76,40 @@ CREATE TABLE IF NOT EXISTS `quest_entity` (
 --
 
 TRUNCATE TABLE `quest_entity`;
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `adventurer_entity`
+--
+ALTER TABLE `adventurer_entity`
+  ADD PRIMARY KEY (`name`);
+
+--
+-- Indexes for table `adventurer_entity_participation`
+--
+ALTER TABLE `adventurer_entity_participation`
+  ADD PRIMARY KEY (`participants_name`,`participation_id`),
+  ADD KEY `FKa5nguyq6xfse0e6yytq2hsfef` (`participation_id`);
+
+--
+-- Indexes for table `quest_entity`
+--
+ALTER TABLE `quest_entity`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK3a9hn7172k2qd14c10pcbf0om` (`owner_name`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `quest_entity`
+--
+ALTER TABLE `quest_entity`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
 --
 -- Constraints for dumped tables
 --
