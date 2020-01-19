@@ -46,8 +46,8 @@ public class ParticipationSteps {
         adventurer = new Adventurer().name("Jack").job("amt");
     }
 
-    @Given("^a quest that can be joined$")
-    public void aQuestThatCanBeJoined() throws Throwable {
+    @Given("^a quest$")
+    public void aQuest() throws Throwable {
         try {
             Environment.getApi().getApiClient().setApiKey(token);
 
@@ -108,13 +108,44 @@ public class ParticipationSteps {
         }
     }
 
-    @Then("^the adventurer participates to the quest$")
-    public void theAdventurerParticipatesToTheQuest() {
-        //TODO: check participation
+    @When("^I DELETE to /participation$")
+    public void iDELETEToParticipation() throws Throwable {
+        try {
+            Environment.getApi().getApiClient().setApiKey(token);
+            env.apiResponse = Environment.getApi()
+                    .quitQuestWithHttpInfo(adventurer.getName(), (int) (long) quest.getId());
+            env.apiCallThrewException = false;
+            env.apiException = null;
+            env.statusCode = env.apiResponse.getStatusCode();
+        } catch (ApiException e) {
+            env.apiCallThrewException = true;
+            env.apiResponse = null;
+            env.apiException = e;
+            env.statusCode = env.apiException.getCode();
+        } finally {
+            Environment.getApi().getApiClient().setApiKey(null);
+        }
     }
 
-    @Then("^the adventurer did not join the quest$")
-    public void theAdventurerDidNotJoinTheQuest() {
+    @Given("^the adventurer participates to the quest$")
+    public void givenTheAdventurerParticipatesToTheQuest() throws Throwable {
+        try {
+            Environment.getApi().getApiClient().setApiKey(token);
+            Environment.getApi().joinQuest(adventurer.getName(), (int) (long) quest.getId());
+        } catch (ApiException ignore) {
+            Assert.fail("adventurer do not participate in quest");
+        } finally {
+            Environment.getApi().getApiClient().setApiKey(null);
+        }
+    }
+
+    @Then("^the adventurer is participating to the quest$")
+    public void theAdventurerIsParticipatingToTheQuest() {
+        //TODO: check participating
+    }
+
+    @Then("^the adventurer is not participating to the quest$")
+    public void theAdventurerIsNotParticipatingToTheQuest() {
         //TODO: check not participating
     }
 }

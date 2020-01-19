@@ -78,14 +78,9 @@ public class AdventurersApiController implements AdventurersApi {
 
     @Override
     public ResponseEntity<Adventurer> getAdventurer(String name) {
-        Optional<AdventurerEntity> adventurer = adventurerRepository.findById(name);
-        if (adventurer.isPresent()) {
-            System.out.println("OK");
-            return ResponseEntity.status(200).body(adventurer.get().toAdventurer());
-        }
-
-        System.out.println("NOT OK");
-        return ResponseEntity.status(404).build();
+        return adventurerRepository.findById(name)
+                .map(adventurerEntity -> ResponseEntity.status(200).body(adventurerEntity.toAdventurer()))
+                .orElseGet(() -> ResponseEntity.status(404).build());
     }
 
     @Override
