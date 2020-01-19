@@ -14,7 +14,7 @@ The objectives of this project is to design, specify, implement and validate **2
 
 For our business, we've decided to implement a adventure game, where adventures can accomplish quests. 
 
-![Screenshot 2020-01-19 at 13.44.08](./README-images/Screenshot 2020-01-19 at 13.44.08.png)
+![Screenshot 2020-01-19 at 13.44.08](README-images/Screenshot 2020-01-19 at 13.44.08.png)
 
 ## Docker-Topology
 
@@ -48,17 +48,17 @@ Inside the file we can find 2 different version topology and topology-dev. The f
 
 User-Api  reset password request :
 
-![Screenshot 2020-01-19 at 22.38.55](./README-images/Screenshot 2020-01-19 at 22.38.55.png)
+![Screenshot 2020-01-19 at 22.38.55](README-images/Screenshot 2020-01-19 at 22.38.55.png)
 
-![Screenshot 2020-01-19 at 22.38.00](./README-images/Screenshot 2020-01-19 at 22.38.00.png)
+![Screenshot 2020-01-19 at 22.38.00](README-images/Screenshot 2020-01-19 at 22.38.00.png)
 
 
 
 User-Api Authentication request:
 
-![Screenshot 2020-01-19 at 22.50.08](./README-images/Screenshot 2020-01-19 at 22.50.08.png)
+![Screenshot 2020-01-19 at 22.50.08](README-images/Screenshot 2020-01-19 at 22.50.08.png)
 
-![Screenshot 2020-01-19 at 22.50.25](./README-images/Screenshot 2020-01-19 at 22.50.25.png)
+![Screenshot 2020-01-19 at 22.50.25](README-images/Screenshot 2020-01-19 at 22.50.25.png)
 
 
 
@@ -72,7 +72,7 @@ In order to test both backends, we've used cucumber for testing the different ap
 
 example of  test scenarios used at the adventurer-api.
 
-![Screenshot 2020-01-19 at 22.58.12](./README-images/Screenshot 2020-01-19 at 22.58.12.png)
+![Screenshot 2020-01-19 at 22.58.12](README-images/Screenshot 2020-01-19 at 22.58.12.png)
 
 This tests enable us to test the crud (Create read update and delete) Methods. It will interact with the database. 
 
