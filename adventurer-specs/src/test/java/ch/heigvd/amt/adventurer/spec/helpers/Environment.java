@@ -3,6 +3,7 @@ package ch.heigvd.amt.adventurer.spec.helpers;
 import ch.heigvd.amt.adventurer.ApiException;
 import ch.heigvd.amt.adventurer.ApiResponse;
 import ch.heigvd.amt.adventurer.api.DefaultApi;
+import ch.heigvd.amt.adventurer.api.dto.Adventurer;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -18,6 +19,8 @@ public class Environment {
     public ApiException apiException;
     public boolean apiCallThrewException;
     public int statusCode;
+    public String token;
+    public Adventurer adventurer;
 
     public static DefaultApi getApi() throws IOException {
         if (api == null) {
