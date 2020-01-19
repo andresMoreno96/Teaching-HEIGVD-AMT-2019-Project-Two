@@ -18,29 +18,57 @@ For our business, we've decided to implement a adventure game, where adventures 
 
 ## Docker-Topology
 
-Inside the file we can find 2 different version topology and topology-dev. The first 
-
-
-
 ### Prod
 
+The production topology contains everything needed to deploy both apis.
 
+In the `topology` folder there is a `docker-compose.yml` file containing the following services.
+
+- Traefik
+- Adventurer API
+- User API
+- Adventurer Database
+- User Database
+
+Traefik serves as e reverse proxy and is the only service that is exposed to the world.
+
+The is a .env file containing the needed configuration for the apis to work, like the mail server information and the JWT secret.
+
+To run the api in production, first move to the `topology` folder.
+
+Run `docker-compose up`  and the apis should be available at `localhost/auth` for the user api and at `localhost/` for the adventurer API.
+
+The SERVER_HOST can be change in the `.env` file if needed.
 
 ### Dev
 
+The topology-dev contains everything needed for development.
+
+First there is a script named `up.sh`. This script is used to run the adventurer and user databases, phpmyadmin and a mail server. Run `./up.sh` to start those containers. To remove the current data in the databases do `./up-sh -r`. And to load some default data (around 4 million in total, so can be very long) do `./up -l` (also remoes old data).
+
+Then you can run the apis (only one at a time) from IntelliJ. The api are then available at `localhost:8080/api`.
+
+Phpmy admin is accessible at `localhost:8888`
+
+The mail server is accessible at `localhost:8889`
+
+By default the User API uses the port 2525 for the mail server wihch corresponds to the one needed for the cucumber tests. To connect the api to the mail server from the topology-dev, modify the IntelliJ configuration to add an environement variable.
+
+![image-20200119231236350](README-images/image-20200119231236350.png)
+
+The variable MAIL_PORT must be set to 1025.
+
+The environement variable DB_MODE is by default set to create-drop wich will create the database when started and then delete it when stopped. This is usefull for cucumber because you may need to start the tests while having an empty database.
+
+If you don't want the data in the database to be removed automatically (when using meter for instance) then set DB_MODE to none and  spring wont touch the database.
 
 
-## Swagger 
 
-
-
-## Instructions:
+# Credentials
 
 `JWT token:` secret
 
 `MyPhp credentials`:  **username**= root  **password**=secret
-
-
 
 ## Tests
 
@@ -56,7 +84,7 @@ User-Api  reset password request :
 
 User-Api Authentication request:
 
-![Screenshot 2020-01-19 at 22.50.08](README-images/Screenshot 2020-01-19 at 22.50.08.png)
+![Screenshot 2020-01-19 at 22.50.08](./README-images/Screenshot 2020-01-19 at 22.50.08.png)
 
 ![Screenshot 2020-01-19 at 22.50.25](README-images/Screenshot 2020-01-19 at 22.50.25.png)
 
@@ -66,15 +94,11 @@ Adventures-Api
 
 
 
-### Cucumber
+### Run Cucumber Tests
 
-In order to run the 
+In order to run the cucumber tests. You need to up the topology-dev and start the api you want to test from IntelliJ.
 
-
-
-
-
-
+Then you can run the cucumber tests from IntelliJ or with `mvn test`. The tests may need a empty database to completely pass.
 
 ## **Known bugs and limitations**
 
