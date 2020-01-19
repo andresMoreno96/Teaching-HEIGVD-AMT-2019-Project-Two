@@ -13,10 +13,11 @@ services:
       - ./data-user-api:/var/lib/mysql
 
   adventurer-api-db:
-    image: mysql:5.7
+    build: ./adventurer-api-mysql
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
+      LOAD_DATA: $LOAD_DATA
       MYSQL_ROOT_PASSWORD: secret
     ports:
       - 3307:3306
