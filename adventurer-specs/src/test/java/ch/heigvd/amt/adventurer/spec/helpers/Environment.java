@@ -4,6 +4,7 @@ import ch.heigvd.amt.adventurer.ApiException;
 import ch.heigvd.amt.adventurer.ApiResponse;
 import ch.heigvd.amt.adventurer.api.DefaultApi;
 import ch.heigvd.amt.adventurer.api.dto.Adventurer;
+import ch.heigvd.amt.adventurer.api.dto.Quest;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -21,6 +22,7 @@ public class Environment {
     public int statusCode;
     public String token;
     public Adventurer adventurer;
+    public Quest quest;
 
     public static DefaultApi getApi() throws IOException {
         if (api == null) {
