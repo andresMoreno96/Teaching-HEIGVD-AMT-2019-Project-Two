@@ -11,7 +11,7 @@ Feature: Creation of an Adventurer
     And I can retrieve the adventurer information
 
   Scenario: create an already existing adventurer
-    Given there is an adventurer  with the named "Tony1998" and he is a "rune master"
+    Given there is an adventurer with the named "Tony1998" and he is a "rune master"
     And  the adventurer "Tony1998" is a "fisher-man"
     When I POST it into the /adventurers endpoint
     Then I receive a 400 status code

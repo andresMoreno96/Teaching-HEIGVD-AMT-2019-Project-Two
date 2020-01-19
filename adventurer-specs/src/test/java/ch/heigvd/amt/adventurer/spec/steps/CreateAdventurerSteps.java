@@ -67,9 +67,10 @@ public class CreateAdventurerSteps {
 
 
     @And("^the adventurer still has the job \"([^\"]*)\"$")
-    public void theAdventurerStillHasTheJob(String arg0) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+    public void theAdventurerStillHasTheJob(String job) throws Throwable {
+
+
+
     }
 
     @Given("^a malformed adventurer$")
@@ -97,7 +98,7 @@ public class CreateAdventurerSteps {
 
     }
 
-    @Given("^there is an adventurer  with the named \"([^\"]*)\" and he is a \"([^\"]*)\"$")
+    @Given("^there is an adventurer with the named \"([^\"]*)\" and he is a \"([^\"]*)\"$")
     public void thereIsAnAdventurerWithTheNamedAndHeIsA(String name, String job) throws Throwable {
 
         Adventurer adventurer=fetchAdventurer(name,jwtManager.getUserEmail(jwtManager.decodeToken(env.token)));
